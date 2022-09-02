@@ -1,0 +1,7 @@
+G:\Ada V.5.0\ADA SKC\SKC_AutomationTest>robot SKC.robot
+
+G:
+cd Ada V.5.0
+cd ADA SKC
+cd SKC_AutomationTest
+robot SKC.robot
