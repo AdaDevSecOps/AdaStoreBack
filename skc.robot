@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation     SKC AUTOMATION TEST
-Library           Selenium2Library    implicit wait=50
+Library           Selenium2Library    implicit_wait=50
 
 *** Variables ***
 ${URL}            https://dev.ada-soft.com/AdaSiamKubota/login
