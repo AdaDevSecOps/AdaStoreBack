@@ -12,35 +12,34 @@ pipeline {
         echo 'Ready to release etc-ex.'
       }
     }
-    stage('Init') {
-      apt-get install python3-pip -y
-          pip install webdriver-manager
-          pip install chromedriver-py==105.0.5195.52
-          pip install robotframework
-          pip install --user robotframework-selenium2library
-          robot skc.robot
-          touch test$(date +%Y%m%d)
-          cat skc.robot
+   
+    stage('build'){
+        steps {
+            withCredentials([...]) {
 
+                    sh '''
+                        alias python=python3.8.7
+                        python -m venv --system-site-packages venv # only for jenkins
+                        python -u setup.py
+                        . venv/bin/activate
+
+                        which chromedriver #/usr/bin/chromedriver  
+                        chromedriver-path #path/to/python/lib/python3.8.7/site-packages/chromedriver_binary
+                        export PATH=$(chromedriver-path):$PATH
+                        
+                        echo $PATH # just to check the output, your path should be on the beginning
+                        which chromedriver # this should now find the proper chromedriver
+                        
+                    '''
+
+                    sh "python -m pytest"
+                }
+
+            }
+        }
     }
   }
 }
 
-from selenium import webdriver
 
-options = webdriver.ChromeOptions()
-options.add_argument('--headless')
-# options.add_argument('window-size=1200x600')
-options.add_argument('--no-sandbox')
-options.add_argument('--disable-dev-shm-usage')
-
-browser = webdriver.Chrome(chrome_options=options)
-#If the chromedriver is not set in the PATH environment variable, specify the chromedriver location with the executable_path option.
-#browser = webdriver.Chrome(chrome_options=options, executable_path="/usr/local/bin/chromedriver")
-
-url = "http://google.com"
-
-browser.get(url)
-browser.save_screenshot("Website.png")
-browser.quit()
 
