@@ -1,17 +1,20 @@
+import time
 from selenium import webdriver
 
-options = webdriver.ChromeOptions()
-options.add_argument('--headless')
-# options.add_argument('window-size=1200x600')
-options.add_argument('--no-sandbox')
-options.add_argument('--disable-dev-shm-usage')
 
-browser = webdriver.Chrome(chrome_options=options)
-#If the chromedriver is not set in the PATH environment variable, specify the chromedriver location with the executable_path option.
-#browser = webdriver.Chrome(chrome_options=options, executable_path="/usr/local/bin/chromedriver")
 
-url = "http://google.com"
+driver = webdriver.Chrome('/usr/local/lib/python3.9/chromedriver')  # Optional argument, if not specified will search path.
 
-browser.get(url)
-browser.save_screenshot("Website.png")
-browser.quit()
+driver.get('http://www.google.com/');
+
+time.sleep(5) # Let the user actually see something!
+
+search_box = driver.find_element_by_name('q')
+
+search_box.send_keys('ChromeDriver')
+
+search_box.submit()
+
+time.sleep(5) # Let the user actually see something!
+
+driver.quit()
