@@ -9,7 +9,6 @@
 #CMD ["run.sh"]
 
 
-
 FROM python:3.8.7-alpine3.16.2
 RUN apt-get update -y
 # We need wget to set up the PPA and xvfb to have a virtual screen and unzip to install the Chromedriver
