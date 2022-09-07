@@ -12,31 +12,26 @@ pipeline {
         echo 'Ready to release etc-ex.'
       }
     }
-   
-    stage('build'){
-        steps {
-            withCredentials([...]) {
-
-                    sh '''
-                        alias python=python3.8.7
-                        python -m venv --system-site-packages venv # only for jenkins
-                        python -u setup.py
-                        . venv/bin/activate
-
-                        which chromedriver #/usr/bin/chromedriver  
-                        chromedriver-path #path/to/python/lib/python3.8.7/site-packages/chromedriver_binary
-                        export PATH=$(chromedriver-path):$PATH
-                        
-                        echo $PATH # just to check the output, your path should be on the beginning
-                        which chromedriver # this should now find the proper chromedriver
-                        
-                    '''
-
-                    sh "python -m pytest"
-                }
-
-            }
+    stage('Build Container Image') {
+      steps {
+        agent{
+          dockerfile {
+              filename '$workspace/dockerfile'       
+          }
         }
+      }
+    }
+    stage('Build') {
+       steps {
+         sh 'npm install'
+       }
+    }
+    stage('Test') {
+      steps {
+        sh "pwd"
+      }
+    }
+   
     
   }
 }
