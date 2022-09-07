@@ -1,17 +1,16 @@
-FROM python:3.7-alpine3.9
-RUN apk-install bash py-pip xvfb dbus chromium chromium-chromedriver
-RUN apk add --no-cache firefox-esr
-RUN pip install --upgrade pip
-RUN pip install robotframework
-RUN pip install robotframework-selenium2library
-ADD run.sh /usr/local/bin/run.sh
-RUN chmod +x /usr/local/bin/run.sh
-CMD ["run.sh"]
+#FROM python:3.7-alpine3.16.2
+#RUN apk-install bash py-pip xvfb dbus chromium chromium-chromedriver
+#RUN apk add --no-cache firefox-esr
+#RUN pip install --upgrade pip
+#RUN pip install robotframework
+#RUN pip install robotframework-selenium2library
+#ADD run.sh /usr/local/bin/run.sh
+#RUN chmod +x /usr/local/bin/run.sh
+#CMD ["run.sh"]
 
 
 
-FROM python:3.8.7-bullseye
-
+FROM python:3.8.7-alpine3.16.2
 RUN apt-get update -y
 # We need wget to set up the PPA and xvfb to have a virtual screen and unzip to install the Chromedriver
 RUN apt-get install -y wget xvfb unzip
@@ -26,7 +25,7 @@ ENV CHROMEDRIVER_VERSION 105.0.5195.52
 ENV CHROMEDRIVER_DIR /chromedriver
 RUN mkdir $CHROMEDRIVER_DIR
 # Download and install Chromedriver
-RUN wget -q --continue -P $CHROMEDRIVER_DIR "http://chromedriver.storage.googleapis.com/$CHROMEDRIVER_VERSION/chromedriver_win32.zip"
+RUN wget -q --continue -P $CHROMEDRIVER_DIR "http://chromedriver.storage.googleapis.com/$CHROMEDRIVER_VERSION/chromedriver_linux64.zip"
 RUN unzip $CHROMEDRIVER_DIR/chromedriver* -d $CHROMEDRIVER_DIR
 # Put Chromedriver into the PATH
 ENV PATH $CHROMEDRIVER_DIR:$PATH
