@@ -19,6 +19,18 @@ RUN unzip $CHROMEDRIVER_DIR/chromedriver* -d $CHROMEDRIVER_DIR
 ENV PATH $CHROMEDRIVER_DIR:$PATH
 RUN apk-install bash py-pip xvfb dbus chromium chromium-chromedriver
 RUN apk add --no-cache firefox-esr
+RUN apt-get -y install google-chrome-stable && \
+wget -q  http://chromedriver.storage.googleapis.com/LATEST_RELEASE && \
+echo $(cat LATEST_RELEASE) && \
+chromedriver_version=$(cat LATEST_RELEASE) && \
+wget -N http://chromedriver.storage.googleapis.com/$chromedriver_version/chromedriver_linux64.zip && \
+unzip chromedriver_linux64.zip && \
+chmod +x chromedriver && \
+mv -f chromedriver /usr/local/bin/chromedriver && \
+ln -s /usr/local/bin/chromedriver /usr/bin/chromedriver && \
+chromedriver --version && google-chrome --version
+
+
 RUN pip install --upgrade pip
 RUN pip install robotframework
 RUN pip install robotframework-selenium2library
@@ -26,3 +38,5 @@ ADD run.sh /usr/local/bin/run.sh
 RUN chmod +x /usr/local/bin/run.sh
 CMD ["run.sh"]
 
+# add this to your Dockerfile
+# by dm08 from Robot Framework Slack channel
