@@ -19,9 +19,9 @@ Login_SC
     type    id=oetUsername    009
     type    id=oetPassword    123456
     click    xpath=//button[@id='obtLOGConfirmLogin']/span
-    Wait Until Page Contains    บริษัทสยามคูโบต้าคอร์ปอเรชั่น จำกัด    50
+    Wait Until Page Contains    AdaSoft    50
     ${response}    Get Text    xpath=//*[@id="spnCompanyName"]
-    Should Be Equal As Strings    ${response}    บริษัทสยามคูโบต้าคอร์ปอเรชั่น จำกัด
+    Should Be Equal As Strings    ${response}    AdaSoft
     [Teardown]    Close Browser
 
 Login_FC
@@ -48,9 +48,9 @@ AD_Cre_Receipt_Suc
     #----
     click    xpath=//button[@id='obtLOGConfirmLogin']/span
     Wait Until Element Is Visible    xpath=//*[@id="spnCompanyName"]    20
-    Wait Until Page Contains    บริษัทสยามคูโบต้าคอร์ปอเรชั่น จำกัด    50
+    Wait Until Page Contains    AdaSoft    50
     ${response}    Get Text    xpath=//*[@id="spnCompanyName"]
-    Should Be Equal As Strings    ${response}    บริษัทสยามคูโบต้าคอร์ปอเรชั่น จำกัด
+    Should Be Equal As Strings    ${response}    AdaSoft
     #----คลิกข้อมูลหลัก
     click    xpath=//div[@id='wrapper']/div[2]/div[3]/button/img
     Wait Until Page Contains    ข้อมูลหลัก    50
@@ -101,9 +101,9 @@ AD_Cre_Sale_Ch_Suc
     #----
     click    xpath=//button[@id='obtLOGConfirmLogin']/span
     Wait Until Element Is Visible    xpath=//*[@id="spnCompanyName"]    20
-    Wait Until Page Contains    บริษัทสยามคูโบต้าคอร์ปอเรชั่น จำกัด    50
+    Wait Until Page Contains    AdaSoft   50
     ${response}    Get Text    xpath=//*[@id="spnCompanyName"]
-    Should Be Equal As Strings    ${response}    บริษัทสยามคูโบต้าคอร์ปอเรชั่น จำกัด
+    Should Be Equal As Strings    ${response}    AdaSoft
     #----คลิกข้อมูลหลัก
     click    xpath=//div[@id='wrapper']/div[2]/div[3]/button/img
     Wait Until Page Contains    ข้อมูลหลัก    50
@@ -149,9 +149,9 @@ AD_Cre_Receipt_Fail
     #----
     click    xpath=//button[@id='obtLOGConfirmLogin']/span
     Wait Until Element Is Visible    xpath=//*[@id="spnCompanyName"]    20
-    Wait Until Page Contains    บริษัทสยามคูโบต้าคอร์ปอเรชั่น จำกัด    50
+    Wait Until Page Contains    AdaSoft   50
     ${response}    Get Text    xpath=//*[@id="spnCompanyName"]
-    Should Be Equal As Strings    ${response}    บริษัทสยามคูโบต้าคอร์ปอเรชั่น จำกัด
+    Should Be Equal As Strings    ${response}    AdaSoft
     #----คลิกข้อมูลหลัก
     click    xpath=//div[@id='wrapper']/div[2]/div[3]/button/img
     Wait Until Page Contains    ข้อมูลหลัก    50
@@ -218,9 +218,9 @@ AD_Cre_Sale_Ch_Fail
     #----
     click    xpath=//button[@id='obtLOGConfirmLogin']/span
     Wait Until Element Is Visible    xpath=//*[@id="spnCompanyName"]    20
-    Wait Until Page Contains    บริษัทสยามคูโบต้าคอร์ปอเรชั่น จำกัด    50
+    Wait Until Page Contains    AdaSoft   50
     ${response}    Get Text    xpath=//*[@id="spnCompanyName"]
-    Should Be Equal As Strings    ${response}    บริษัทสยามคูโบต้าคอร์ปอเรชั่น จำกัด
+    Should Be Equal As Strings    ${response}    AdaSoft
     #----คลิกข้อมูลหลัก
     click    xpath=//div[@id='wrapper']/div[2]/div[3]/button/img
     Wait Until Page Contains    ข้อมูลหลัก    50
@@ -270,9 +270,9 @@ AD_Create_SC
     #----
     click    xpath=//button[@id='obtLOGConfirmLogin']/span
     Wait Until Element Is Visible    xpath=//*[@id="spnCompanyName"]    20
-    Wait Until Page Contains    บริษัทสยามคูโบต้าคอร์ปอเรชั่น จำกัด    50
+    Wait Until Page Contains    AdaSoft    50
     ${response}    Get Text    xpath=//*[@id="spnCompanyName"]
-    Should Be Equal As Strings    ${response}    บริษัทสยามคูโบต้าคอร์ปอเรชั่น จำกัด
+    Should Be Equal As Strings    ${response}    AdaSoft
     #----คลิกข้อมูลหลัก
     click    xpath=//div[@id='wrapper']/div[2]/div[3]/button/img
     Wait Until Page Contains    ข้อมูลหลัก    50
@@ -327,9 +327,9 @@ AD_Create_FC_NameAD
     type    id=oetPassword    ${PASSWORD}
     #----
     click    xpath=//button[@id='obtLOGConfirmLogin']/span
-    Wait Until Page Contains    บริษัทสยามคูโบต้าคอร์ปอเรชั่น จำกัด    50
+    Wait Until Page Contains   AdaSoft   50
     ${response}    Get Text    xpath=//*[@id="spnCompanyName"]
-    Should Be Equal As Strings    ${response}    บริษัทสยามคูโบต้าคอร์ปอเรชั่น จำกัด
+    Should Be Equal As Strings    ${response}    AdaSoft
     #----คลิกข้อมูลหลัก
     click    xpath=//div[@id='wrapper']/div[2]/div[3]/button/img
     Wait Until Page Contains    ข้อมูลหลัก    50
@@ -371,9 +371,9 @@ AD_Create_FC_TextAD
     type    id=oetPassword    ${PASSWORD}
     #----
     click    xpath=//button[@id='obtLOGConfirmLogin']/span
-    Wait Until Page Contains    บริษัทสยามคูโบต้าคอร์ปอเรชั่น จำกัด    50
+    Wait Until Page Contains    AdaSoft   50
     ${response}    Get Text    xpath=//*[@id="spnCompanyName"]
-    Should Be Equal As Strings    ${response}    บริษัทสยามคูโบต้าคอร์ปอเรชั่น จำกัด
+    Should Be Equal As Strings    ${response}    AdaSoft
     #----คลิกข้อมูลหลัก
     click    xpath=//div[@id='wrapper']/div[2]/div[3]/button/img
     Wait Until Page Contains    ข้อมูลหลัก    50
@@ -416,9 +416,9 @@ AD_Del
     type    id=oetPassword    ${PASSWORD}
     #----
     click    xpath=//button[@id='obtLOGConfirmLogin']/span
-    Wait Until Page Contains    บริษัทสยามคูโบต้าคอร์ปอเรชั่น จำกัด    50
+    Wait Until Page Contains    AdaSoft   50
     ${response}    Get Text    xpath=//*[@id="spnCompanyName"]
-    Should Be Equal As Strings    ${response}    บริษัทสยามคูโบต้าคอร์ปอเรชั่น จำกัด
+    Should Be Equal As Strings    ${response}    AdaSoft
     #----คลิกข้อมูลหลัก
     click    xpath=//div[@id='wrapper']/div[2]/div[3]/button/img
     Wait Until Page Contains    ข้อมูลหลัก    50
@@ -455,9 +455,9 @@ Printer_SC
     type    id=oetPassword    ${PASSWORD}
     #----
     click    xpath=//button[@id='obtLOGConfirmLogin']/span
-    Wait Until Page Contains    บริษัทสยามคูโบต้าคอร์ปอเรชั่น จำกัด    50
+    Wait Until Page Contains    AdaSoft   50
     ${response}    Get Text    xpath=//*[@id="spnCompanyName"]
-    Should Be Equal As Strings    ${response}    บริษัทสยามคูโบต้าคอร์ปอเรชั่น จำกัด
+    Should Be Equal As Strings    ${response}    AdaSoft
     #----คลิกข้อมูลหลัก
     click    xpath=//div[@id='wrapper']/div[2]/div[3]/button/img
     Wait Until Page Contains    ข้อมูลหลัก    50
@@ -515,9 +515,9 @@ Printer_Edit_Del
     ${ECK}    Get WebElement    xpath=//button[@id='obtLOGConfirmLogin']/span
     Execute Javascript    arguments[0].click();    ARGUMENTS    ${ECK}
     #click    xpath=//button[@id='obtLOGConfirmLogin']/span
-    Wait Until Page Contains    บริษัทสยามคูโบต้าคอร์ปอเรชั่น จำกัด    50
+    Wait Until Page Contains    AdaSoft    50
     ${response}    Get Text    xpath=//*[@id="spnCompanyName"]
-    Should Be Equal As Strings    ${response}    บริษัทสยามคูโบต้าคอร์ปอเรชั่น จำกัด
+    Should Be Equal As Strings    ${response}    AdaSoft
     #----คลิกข้อมูลหลัก
     ${ECK}    Get WebElement    xpath=//div[@id='wrapper']/div[2]/div[3]/button/img
     Execute Javascript    arguments[0].click();    ARGUMENTS    ${ECK}
