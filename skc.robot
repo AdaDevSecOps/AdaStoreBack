@@ -616,7 +616,7 @@ PosRegister
     [Teardown]    Close Browser
 
 AddPos-checkErr
-     Open Browser     https://dev.ada-soft.com/AdaSiamKubota/    ${BROWSER}
+    [Setup]    Run Keywords     Open Browser     https://dev.ada-soft.com/AdaSiamKubota/    ${BROWSER}
     Set Selenium Speed  ${SELSPEED}
     # open    https://dev.ada-soft.com/AdaSiamKubota/login
     Maximize Browser Window
