@@ -1,6 +1,6 @@
 #Base image
 FROM gliderlabs/alpine:3.6
-
+WORKDIR G:\Ada V.5.0\ADA SKC\PJ
 #update the image
 RUN apt-get update
 
