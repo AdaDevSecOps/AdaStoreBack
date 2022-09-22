@@ -616,24 +616,24 @@ PosRegister
     [Teardown]    Close Browser
 
 AddPos-checkErr
-    Open Browser    https://dev.ada-soft.com/AdaSiamKubota/    ${BROWSER}
-    Set Selenium Speed    ${SELSPEED}
+     Open Browser     https://dev.ada-soft.com/AdaSiamKubota/    ${BROWSER}
+    Set Selenium Speed  ${SELSPEED}
     # open    https://dev.ada-soft.com/AdaSiamKubota/login
     Maximize Browser Window
-    Input Text    id=oetUsername    009
-    Input Text    id=oetPassword    123456
+    Input Text  id=oetUsername    009
+    Input Text  id=oetPassword    123456
     Click Button    id=obtLOGConfirmLogin
-    #    open    https://dev.ada-soft.com/AdaSiamKubota/
-    Wait Until Element Is Visible    id=spnCompanyName
-    click Element    xpath=//div[@id='wrapper']/div[2]/div[3]/button/img
-    click Element    xpath=//nav[@id='oNavMenuMAS']/ul/li/ul/li[3]/a/span
-    click Element    link=จุดขาย
+#    open    https://dev.ada-soft.com/AdaSiamKubota/
+    Wait Until Element Is Visible   id=spnCompanyName
+    click Element   xpath=//div[@id='wrapper']/div[2]/div[3]/button/img
+    click Element   xpath=//nav[@id='oNavMenuMAS']/ul/li/ul/li[3]/a/span
+    click Element     link=จุดขาย
     # หน้าpos -ปุ่มเพิ่ม
-    click Element    xpath=//div[@id='odvBtnPosInfo']/button
+    click Element     xpath=//div[@id='odvBtnPosInfo']/button
     # ตรวจสอบ ชื่อเครื่องจุดขาย
     click Button    xpath=//button[@type='submit']
     Wait Until Page Contains    ชื่อเครื่องจุดขาย
-    # หน้าaddpos - เพิ่ม ชื่อเครื่องจุดขาย
+     # หน้าaddpos - เพิ่ม ชื่อเครื่องจุดขาย
     click Button    id=oetPosName
     Input Text    id=oetPosName    pos03
     click Element    xpath=//img[contains(@src,'https://dev.ada-soft.com/AdaSiamKubota//application/modules/common/assets/images/icons/find-24.png')]
@@ -642,27 +642,23 @@ AddPos-checkErr
     click Element    xpath=//button[@onclick="JCNxConfirmSelected('oSaleMachineBrowseBch')"]
     click Element    xpath=//button[@id='oimPosBrowseChanel']/img
     click Element    xpath=//div[@id='odvModalContent']/div[2]/div[3]/div[2]/div/button[3]
-    click Element    xpath=//table[@id='otbBrowserList']/tbody/tr[5]/td[2]
+    #click Element    xpath=//table[@id='otbBrowserList']/tbody/tr[5]/td[2]
+    click Element    xpath=//*[@id="otbBrowserList"]/tbody/tr[3]/td[2]
     click Element    xpath=//button[@onclick="JCNxConfirmSelected('oBrowsePosOption')"]
-    Execute JavaScript    window.scrollTo(0,1000)
     # ตรวจสอบ หมายเลขจดทะเบียน
-    Input Text    id=oetPosRegNo    PO
-    Clear Element Text    id=oetPosRegNo
-    Execute JavaScript    window.scrollTo(0,0)
+    Input Text  id=oetPosRegNo  PO
+    Clear Element Text  id=oetPosRegNo    
     click Button    xpath=//button[@type='submit']
-    Wait Until Page Contains    กรุณากรอกหมายเลขจดทะเบียน
-    # หน้าaddpos - เพิ่ม หมายเลขจดทะเบียน
-    Execute JavaScript    window.scrollTo(0,200)
+    Wait Until Page Contains   กรุณากรอกหมายเลขจดทะเบียน
+    # หน้าaddpos - เพิ่ม หมายเลขจดทะเบียน   
     click Button    id=oetPosRegNo
     Input Text    id=oetPosRegNo    pos03num
-    Execute JavaScript    window.scrollTo(0,1000)
     click Element    xpath=//button[@id='obtSlipmessage']/img
-    click Element    xpath=//table[@id='otbBrowserList']/tbody/tr[5]/td[2]
+    #click Element    xpath=//table[@id='otbBrowserList']/tbody/tr[5]/td[2]
+    click Element     xpath=//*[@id="otbBrowserList"]/tbody/tr[3]/td[2]
     click Button    xpath=//button[@onclick="JCNxConfirmSelected('oSlipMessage')"]
-    Execute JavaScript    window.scrollTo(0,0)
     click Button    xpath=//button[@type='submit']
     click Element    id=oliPosTitle
-    [Teardown]    Close Browser
 
 *** Keywords ***
 TextEQ
