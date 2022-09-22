@@ -1,42 +1,36 @@
-FROM python:3.8-alpine3.16.2
-RUN apt-get update -y
-# We need wget to set up the PPA and xvfb to have a virtual screen and unzip to install the Chromedriver
-RUN apt-get install -y wget xvfb unzip
-# Set up the Chrome PPA
-RUN wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -
-RUN echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list
-# Update the package list and install chrome
-RUN apt-get update -y
-RUN apt-get install -y google-chrome-stable
-# Set up Chromedriver Environment variables
-ENV CHROMEDRIVER_VERSION 105.0.5195.52
-ENV CHROMEDRIVER_DIR /chromedriver
-RUN mkdir $CHROMEDRIVER_DIR
-# Download and install Chromedriver
-RUN wget -q --continue -P $CHROMEDRIVER_DIR "http://chromedriver.storage.googleapis.com/$CHROMEDRIVER_VERSION/chromedriver_linux64.zip"
-RUN unzip $CHROMEDRIVER_DIR/chromedriver* -d $CHROMEDRIVER_DIR
-# Put Chromedriver into the PATH
-ENV PATH $CHROMEDRIVER_DIR:$PATH
-RUN apk-install bash py-pip xvfb dbus chromium chromium-chromedriver
-RUN apk add --no-cache firefox-esr
-RUN apt-get -y install google-chrome-stable && \
-wget -q  http://chromedriver.storage.googleapis.com/LATEST_RELEASE && \
-echo $(cat LATEST_RELEASE) && \
-chromedriver_version=$(cat LATEST_RELEASE) && \
-wget -N http://chromedriver.storage.googleapis.com/$chromedriver_version/chromedriver_linux64.zip && \
-unzip chromedriver_linux64.zip && \
-chmod +x chromedriver && \
-mv -f chromedriver /usr/local/bin/chromedriver && \
-ln -s /usr/local/bin/chromedriver /usr/bin/chromedriver && \
-chromedriver --version && google-chrome --version
+#Base image
+FROM gliderlabs/alpine:3.6
 
+#update the image
+RUN apt-get update
 
-RUN pip install --upgrade pip
-RUN pip install robotframework
-RUN pip install robotframework-selenium2library
+#install python
+RUN apt install -y python3.8.7
+RUN apt install -y python3-pip
+
+#install robotframework and seleniumlibrary
+RUN pip3 install robotframework
+RUN pip3 install robotframework-selenium2library
+
+#The followig are needed for Chrome and Chromedriver installation
+RUN apt-get install -y xvfb 
+RUN apt-get install -y zip 
+RUN apt-get install -y wget 
+RUN apt-get install ca-certificates 
+RUN apt-get install -y libnss3-dev libasound2 libxss1 libappindicator3-1 libindicator7 gconf-service libgconf-2-4 libpango1.0-0 xdg-utils fonts-liberation
+RUN wget -N https://chromedriver.storage.googleapis.com/index.html?path=105.0.5195.52/chromedriver_win32.zip
+RUN unzip chromedriver_win32.zip
+RUN chmod +x chromedriver
+RUN cp /chromedriver /usr/local/bin
+RUN rm chromedriver_win32.zip
+
+#Robot Specific
+RUN mkdir /robot
+RUN mkdir /results
+ENTRYPOINT ["robot"]
+#
 ADD run.sh /usr/local/bin/run.sh
 RUN chmod +x /usr/local/bin/run.sh
-CMD ["run.sh"]
 
-# add this to your Dockerfile
-# by dm08 from Robot Framework Slack channel
+CMD ["run.sh"]
+#
