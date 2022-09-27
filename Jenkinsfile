@@ -92,7 +92,9 @@ pipeline
                         --env MQ_Sale_QUEUES=UPLOADSALE,UPLOADSALEPAY,UPLOADSALERT,UPLOADSALEVD,UPLOADSHIFT,UPLOADTAX,UPLOADVOID \
                         --env MQ_Sale_EXCHANGE= \
                         --env MQ_Sale_PORT=5672 \
-                        --name adastoreback-web -p 8899:80 naleruto/ada-webserver'
+                        --name adastoreback-web \
+                        --mount type=bind,source=C:/X-User/Nattakit,target=/var/www/html/application/logs \
+                        -p 8899:80 naleruto/ada-webserver'
                 }
             }
         }
