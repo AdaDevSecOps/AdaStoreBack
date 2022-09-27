@@ -92,25 +92,25 @@ pipeline
                         --env MQ_Sale_QUEUES=UPLOADSALE,UPLOADSALEPAY,UPLOADSALERT,UPLOADSALEVD,UPLOADSHIFT,UPLOADTAX,UPLOADVOID \
                         --env MQ_Sale_EXCHANGE= \
                         --env MQ_Sale_PORT=5672 \
-                        --name backoffice-web -p 8889:80 naleruto/ada-webserver'
+                        --name backoffice-web -p 8899:80 naleruto/ada-webserver'
                 }
             }
         }
 
 
 
-        // stage('Test Container')
-        // {
-        //     steps
-        //     {
-        //         echo 'Test Container...'
-        //         script
-        //         {
-        //             // bat 'cd "C:/ProgramData/Jenkins/.jenkins/workspace/QA automation"'
-        //             bat 'robot skc-cr.robot'
-        //         }
-        //     }
-        // }
+        stage('Excute Robot')
+        {
+            steps
+            {
+                echo 'Excute Robot...'
+                script
+                {
+                    // bat 'cd "C:/ProgramData/Jenkins/.jenkins/workspace/QA automation"'
+                    bat 'robot skc-cr.robot'
+                }
+            }
+        }
 
         stage('Tests Container') {
 
