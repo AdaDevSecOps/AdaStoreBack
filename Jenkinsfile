@@ -140,7 +140,7 @@ pipeline
     //             echo 'Stop Container...'
     //             script
     //             {
-    //                     bat 'docker stop backoffice-web'
+    //                     bat 'docker stop adastoreback-web'
 
     //             }
     //         }
@@ -154,7 +154,7 @@ pipeline
     //             echo 'Remove Container...'
     //             script
     //             {
-    //                     bat 'docker rm backoffice-web'
+    //                     bat 'docker rm adastoreback-web'
 
     //             }
     //         }
