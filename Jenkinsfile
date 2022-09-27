@@ -135,32 +135,32 @@ pipeline
         // }
 
 
-       stage('Stop Container')
-        {
-            steps
-            {
-                echo 'Stop Container...'
-                script
-                {
-                        bat 'docker stop adastoreback-web'
+    //    stage('Stop Container')
+    //     {
+    //         steps
+    //         {
+    //             echo 'Stop Container...'
+    //             script
+    //             {
+    //                     bat 'docker stop adastoreback-web'
 
-                }
-            }
-        }
+    //             }
+    //         }
+    //     }
 
 
-       stage('Remove Container')
-        {
-            steps
-            {
-                echo 'Remove Container...'
-                script
-                {
-                        bat 'docker rm adastoreback-web'
+    //    stage('Remove Container')
+    //     {
+    //         steps
+    //         {
+    //             echo 'Remove Container...'
+    //             script
+    //             {
+    //                     bat 'docker rm adastoreback-web'
 
-                }
-            }
-        }
+    //             }
+    //         }
+    //     }
 
 
         // stage('Deploy Image') {
