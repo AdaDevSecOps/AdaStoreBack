@@ -133,32 +133,32 @@ pipeline
         }
 
 
-       stage('Stop Container')
-        {
-            steps
-            {
-                echo 'Stop Container...'
-                script
-                {
-                        bat 'docker stop backoffice-web'
+    //    stage('Stop Container')
+    //     {
+    //         steps
+    //         {
+    //             echo 'Stop Container...'
+    //             script
+    //             {
+    //                     bat 'docker stop backoffice-web'
 
-                }
-            }
-        }
+    //             }
+    //         }
+    //     }
 
 
-       stage('Remove Container')
-        {
-            steps
-            {
-                echo 'Remove Container...'
-                script
-                {
-                        bat 'docker rm backoffice-web'
+    //    stage('Remove Container')
+    //     {
+    //         steps
+    //         {
+    //             echo 'Remove Container...'
+    //             script
+    //             {
+    //                     bat 'docker rm backoffice-web'
 
-                }
-            }
-        }
+    //             }
+    //         }
+    //     }
 
 
         // stage('Deploy Image') {
