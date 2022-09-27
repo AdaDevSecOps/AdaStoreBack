@@ -92,7 +92,7 @@ pipeline
                         --env MQ_Sale_QUEUES=UPLOADSALE,UPLOADSALEPAY,UPLOADSALERT,UPLOADSALEVD,UPLOADSHIFT,UPLOADTAX,UPLOADVOID \
                         --env MQ_Sale_EXCHANGE= \
                         --env MQ_Sale_PORT=5672 \
-                        --name backoffice-web -p 8899:80 naleruto/ada-webserver'
+                        --name adastoreback-web -p 8899:80 naleruto/ada-webserver'
                 }
             }
         }
