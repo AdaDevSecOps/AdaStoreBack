@@ -10,3 +10,4 @@ COPY ./app /var/www/html
 # RUN chmod 777 /var/www/html/application/modules/sale/assets
 # RUN chmod 777 /var/www/html/application/modules/report/assets
 # RUN chmod 777 /var/www/html/application/logs
+# application/modules/common/assets/system/systemimage
