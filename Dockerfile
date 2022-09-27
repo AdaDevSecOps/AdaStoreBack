@@ -8,4 +8,4 @@ COPY ./app /var/www/html
 # WORKDIR /var/www/html/application/modules/report/assets
 # RUN chmod 777 /var/www/html/application/modules/sale/assets
 # RUN chmod 777 /var/www/html/application/modules/report/assets
-RUN chmod 777 /var/www/html/application/logs
+# RUN chmod 777 /var/www/html/application/logs
