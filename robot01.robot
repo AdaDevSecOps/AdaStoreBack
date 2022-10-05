@@ -1,5 +1,5 @@
 *** Settings ***
-Library  Selenium2Library
+Library  Selenium2Library   implicit_wait=50
 *** Variables ***
 ${BROWSER}   chrome
 ${SELSPEED}  0.5s
@@ -28,7 +28,6 @@ Branch-Create
     open    http://sit.ada-soft.com:8899/
     Wait Until Page Contains    AdaSoft    50
     ${response}    Get Text    id=spnCompanyName
-    Should Be Equal As Strings    ${response}    AdaSoft
     click    xpath=//div[@id='wrapper']/div[2]/div[3]/button/img
     click    xpath=//nav[@id='oNavMenuMAS']/ul/li/ul/li[2]/a/span
     click    link=สาขา
