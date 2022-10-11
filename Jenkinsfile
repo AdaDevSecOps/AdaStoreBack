@@ -3,7 +3,7 @@ pipeline {
   stages {
     stage('Checkout') {
       steps {
-        git(url: 'https://github.com/sarunnaphatra/SKC-Automation.git', branch: 'main')
+        git(url: 'https://github.com/AdaDevSecOps/AdaStoreBack.git', branch: 'main')
       }
     }
 
