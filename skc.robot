@@ -3,7 +3,7 @@ Documentation     SKC AUTOMATION TEST
 Library           Selenium2Library    implicit_wait=50
 
 *** Variables ***
-${URL}            http://sit.ada-soft.com:8999/login
+${URL}            http://sit.ada-soft.com:8899/login
 ${BROWSER}        chrome
 ${SELSPEED}       0.5s
 ${USERNAME}       009
