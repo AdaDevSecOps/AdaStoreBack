@@ -22,17 +22,16 @@ Login-FailCase
     Wait Until Page Contains    ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง    50
     ${response}    Get Text    xpath=//*[@id="ospUsrOrPwNotCorrect"]
     Should Be Equal As Strings    ${response}    ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง    #Login_SC    #[Setup]    Run Keywords    Open Browser    ${URL}    ${BROWSER}    #...    # AND    Set Selenium Speed    ${SELSPEED}
-    sleep    2s
     [Teardown]    Close Browser
 
 Branch-Create
-    [Setup]    Run Keywords    Open Browser    ${URL}    ${BROWSER}
+    [Setup]    Run Keywords    Open Browser    http://sit.ada-soft.com:8899/login    ${BROWSER}
     ...    AND    Set Selenium Speed    ${SELSPEED}
     Maximize Browser Window
     type    id=oetUsername    009
     type    id=oetPassword    123456
     click    id=obtLOGConfirmLogin
-    open    http://sit.ada-soft.com:8999/
+    open    http://sit.ada-soft.com:8899/
     Wait Until Page Contains    AdaSoft    50
     ${response}    Get Text    id=spnCompanyName
     Should Be Equal As Strings    ${response}    AdaSoft
@@ -45,11 +44,8 @@ Branch-Create
     sleep    3s
     click    xpath=//*[@id="odvBtnBchInfo"]/button
     Wait Until Page Contains    เพิ่มสาขา    50
-    #${response}    Get Text    xpath=//*[@id="oliBCHAdd"]/a
-    #Should Be Equal As Strings    ${response}    เพิ่มสาขา
-    #IF "${response}"    !=    "เพิ่มสาขา"
-    #ELSE
-    #END
+    ${response}    Get Text    xpath=//*[@id="oliBCHAdd"]/a
+    Should Be Equal As Strings    ${response}    เพิ่มสาขา
     click    xpath=//*[@id="odvBchAutoGenCode"]/div/label/span
     type    id=oetBchCode    TEST2Automation-Test    #ทดสอบความยาวเกิน 5
     ${SAV}    Get WebElement    xpath=//*[@id="odvBtnCmpEditInfo"]/div/button[1]
@@ -153,13 +149,13 @@ Branch-Create
     [Teardown]    Close Browser
 
 Warehouse-Create
-    [Setup]    Run Keywords    Open Browser    ${URL}    ${BROWSER}
+    [Setup]    Run Keywords    Open Browser    http://sit.ada-soft.com:8899/login    ${BROWSER}
     ...    AND    Set Selenium Speed    ${SELSPEED}
     Maximize Browser Window
     type    id=oetUsername    009
     type    id=oetPassword    123456
     click    id=obtLOGConfirmLogin
-    open    http://sit.ada-soft.com:8999/
+    open    http://sit.ada-soft.com:8899/
     Wait Until Page Contains    AdaSoft    50
     ${response}    Get Text    id=spnCompanyName
     Should Be Equal As Strings    ${response}    AdaSoft
@@ -179,7 +175,7 @@ Warehouse-Create
     #click Element    xpaht=//*[@id="odvWahAutoGenCode"]/div/label    #<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< Issue
     #Unselect Checkbox    name=ocbWahAutoGenCode
     #type    id=oetWahCode    WHCQA
-    click Element    xpath=//img[contains(@src,'http://sit.ada-soft.com:8999/application/modules/common/assets/images/icons/find-24.png')]
+    click Element    xpath=//img[contains(@src,'http://sit.ada-soft.com:8899/application/modules/common/assets/images/icons/find-24.png')]
     click Element    xpath=//table[@id='otbBrowserList']/tbody/tr[5]/td
     click Element    xpath=//button[@onclick="JCNxConfirmSelected('oWahBrowseBchCreated')"]
     click Element    id=oetWahName
@@ -197,17 +193,16 @@ Warehouse-Create
     sleep    2s
     click Element    id=obtBarBack
     #Warehouse-Del
-    sleep    2s
     [Teardown]    Close Browser
 
 POS-Create
-    [Setup]    Run Keywords    Open Browser    ${URL}    ${BROWSER}
+    [Setup]    Run Keywords    Open Browser    http://sit.ada-soft.com:8899/login    ${BROWSER}
     ...    AND    Set Selenium Speed    ${SELSPEED}
     Maximize Browser Window
     type    id=oetUsername    009
     type    id=oetPassword    123456
     click    id=obtLOGConfirmLogin
-    open    http://sit.ada-soft.com:8999/
+    open    http://sit.ada-soft.com:8899/
     Wait Until Page Contains    AdaSoft    50
     ${response}    Get Text    id=spnCompanyName
     Should Be Equal As Strings    ${response}    AdaSoft    #<<<<<<<<<<<<<<<<<<<<<<
@@ -221,59 +216,57 @@ POS-Create
     click    xpath=//div[@id='odvBtnPosInfo']/button
     Wait Until Page Contains    เพิ่ม    50
     type    id=oetPosName    T-POS
-    click    xpath=//img[contains(@src,'http://sit.ada-soft.com:8999//application/modules/common/assets/images/icons/find-24.png')]
+    click    xpath=//img[contains(@src,'http://sit.ada-soft.com:8899//application/modules/common/assets/images/icons/find-24.png')]
     Wait Until Page Contains    แสดงข้อมูล : สาขา    50
     ${response}    Get Text    xpath=//*[@id="odvModalContent"]/div[1]/div/div[1]/label
     Should Be Equal As Strings    ${response}    แสดงข้อมูล : สาขา
     click    xpath=//table[@id='otbBrowserList']/tbody/tr/td[2]    #สาขา
-    sleep    2s
+    sleep    1s
     click    xpath=//button[@onclick="JCNxConfirmSelected('oSaleMachineBrowseBch')"]
     click    xpath=//button[@id='oimPosBrowseChanel']/img
     ${response}    Get Text    xpath=//*[@id="odvModalContent"]/div[1]/div/div[1]/label
     Should Be Equal As Strings    ${response}    แสดงข้อมูล : ช่องทางขาย
     click    xpath=//div[@id='odvModalContent']/div[2]/div[3]/div[2]/div/button[4]
-    sleep    2s
+    sleep    1s
     click    xpath=//table[@id='otbBrowserList']/tbody/tr[5]/td[2]    #ช่องทางการขาย
     click    xpath=//button[@onclick="JCNxConfirmSelected('oBrowsePosOption')"]
-    sleep    2s
+    sleep    1s
     type    id=oetPosRegNo    TESTER-01 Automation
     Execute JavaScript    window.scrollTo(0,500)
     click    xpath=//form[@id='ofmAddSaleMachine']/div/div/div[7]/div/button/div/div/div
     click    xpath=//form[@id='ofmAddSaleMachine']/div/div/div[7]/div/div/div[2]/ul/li/a
-    click    xpath=//img[contains(@src,'http://sit.ada-soft.com:8999/application/modules/common/assets/images/icons/find-24.png')]
-    sleep    2s
+    click    xpath=//img[contains(@src,'http://sit.ada-soft.com:8899/application/modules/common/assets/images/icons/find-24.png')]
+    sleep    1s
     ${response}    Get Text    xpath=//*[@id="odvModalContent"]/div[1]/div/div[1]/label
     Should Be Equal As Strings    ${response}    แสดงข้อมูล : คลังสินค้า
     click    xpath=//table[@id='otbBrowserList']/tbody/tr/td[2]
-    sleep    2s
+    sleep    1s
     click    xpath=//button[@onclick="JCNxConfirmSelected('oBrowsePosOption')"]
-    sleep    2s
+    sleep    1s
     click    xpath=//button[@id='obtSlipmessage']/img
-    sleep    2s
+    sleep    1s
     ${response}    Get Text    xpath=//*[@id="odvModalContent"]/div[1]/div/div[1]/label
     Should Be Equal As Strings    ${response}    แสดงข้อมูล : หัวท้ายใบเสร็จ
     click    xpath=//div[@id='odvModalContent']/div[2]/div[3]/div[2]/div/button[3]
-    sleep    2s
+    sleep    1s
     click    xpath=//table[@id='otbBrowserList']/tbody/tr[5]/td[2]
-    sleep    2s
+    sleep    1s
     click    xpath=//button[@onclick="JCNxConfirmSelected('oSlipMessage')"]
-    sleep    2s
+    sleep    1s
     Execute JavaScript    window.scrollTo(0,0)
     click    xpath=//*[@id="odvBtnAddEdit"]/div/div/button[1]
-    sleep    2s
-    click    xpath=//*[@id="odvBtnAddEdit"]/div/button
-    Wait Until Page Contains    ชื่อเครื่องจุดขาย    50
-    sleep    2s
+    #sleep    1s
+    #click    xpath=//*[@id="odvBtnAddEdit"]/div/button
     [Teardown]    Close Browser
 
 Branch-Del
-    [Setup]    Run Keywords    Open Browser    ${URL}    ${BROWSER}
+    [Setup]    Run Keywords    Open Browser    http://sit.ada-soft.com:8899/login    ${BROWSER}
     ...    AND    Set Selenium Speed    ${SELSPEED}
     Maximize Browser Window
     type    id=oetUsername    009
     type    id=oetPassword    123456
     click    id=obtLOGConfirmLogin
-    open    http://sit.ada-soft.com:8999/
+    open    http://sit.ada-soft.com:8899/
     Wait Until Page Contains    AdaSoft    50
     ${response}    Get Text    id=spnCompanyName
     Should Be Equal As Strings    ${response}    AdaSoft    #<<<<<<<<<<<<<<<<<<<<<<
