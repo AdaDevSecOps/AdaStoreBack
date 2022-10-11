@@ -110,16 +110,7 @@ pipeline
                 {
                     // bat 'cd "C:/ProgramData/Jenkins/.jenkins/workspace/QA automation"'
                     bat 'robot skc.robot'
-                }
-            }
-        }
-
-        stage('Tests Container') {
-
-            steps {
-                echo 'Testing...'
-                script {
-                step(
+                   step(
                     [
                         $class : 'RobotPublisher',
                         outputPath : '',
@@ -130,9 +121,29 @@ pipeline
                         otherFiles : "*.png",
                     ]
                 )
-                }  
+                }
             }
         }
+
+        // stage('Tests Container') {
+
+        //     steps {
+        //         echo 'Testing...'
+        //         script {
+        //         step(
+        //             [
+        //                 $class : 'RobotPublisher',
+        //                 outputPath : '',
+        //                 outputFileName : "*.xml",
+        //                 disableArchiveOutput : false,
+        //                 passThreshold : 100,
+        //                 unstableThreshold: 95.0,
+        //                 otherFiles : "*.png",
+        //             ]
+        //         )
+        //         }  
+        //     }
+        // }
 
 
        stage('Stop Container')
