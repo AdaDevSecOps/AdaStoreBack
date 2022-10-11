@@ -32,7 +32,7 @@ Branch-Create
     type    id=oetPassword    123456
     click    id=obtLOGConfirmLogin
     open    http://sit.ada-soft.com:8899/
-    Wait Until Page Contains    AdaSoft    50
+    Wait Until Page Contains    AdaSoft    70
     ${response}    Get Text    id=spnCompanyName
     Should Be Equal As Strings    ${response}    AdaSoft
     click    xpath=//div[@id='wrapper']/div[2]/div[3]/button/img
