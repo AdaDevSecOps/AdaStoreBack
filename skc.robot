@@ -50,7 +50,6 @@ Branch-Create
     #IF "${response}"    !=    "เพิ่มสาขา"
     #ELSE
     #END
-    #TRE
     click    xpath=//*[@id="odvBchAutoGenCode"]/div/label/span
     type    id=oetBchCode    TEST2Automation-Test    #ทดสอบความยาวเกิน 5
     ${SAV}    Get WebElement    xpath=//*[@id="odvBtnCmpEditInfo"]/div/button[1]
