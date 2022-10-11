@@ -109,7 +109,7 @@ pipeline
                 script
                 {
                     // bat 'cd "C:/ProgramData/Jenkins/.jenkins/workspace/QA automation"'
-                    bat 'robot robot01.robot'
+                    bat 'robot skc.robot'
                 }
             }
         }

@@ -11,23 +11,9 @@ ${PASSWORD}       123456
 ${NPASS}          123456789
 
 *** Test Cases ***
-Login_SC
+Login-FailCase
     [Setup]    Run Keywords    Open Browser    ${URL}    ${BROWSER}
     ...    AND    Set Selenium Speed    ${SELSPEED}
-    # open    https://dev.ada-soft.com/AdaSiamKubota/login
-    Maximize Browser Window
-    type    id=oetUsername    009
-    type    id=oetPassword    123456
-    click    xpath=//button[@id='obtLOGConfirmLogin']/span
-    Wait Until Page Contains    AdaSoft    50
-    ${response}    Get Text    xpath=//*[@id="spnCompanyName"]
-    Should Be Equal As Strings    ${response}    AdaSoft
-    [Teardown]    Close Browser
-
-Login_FC
-    [Setup]    Run Keywords    Open Browser    ${URL}    ${BROWSER}
-    ...    AND    Set Selenium Speed    ${SELSPEED}
-    # open    https://dev.ada-soft.com/AdaSiamKubota/login
     Maximize Browser Window
     type    id=oetUsername    009
     type    id=oetPassword    123456789
@@ -35,630 +21,271 @@ Login_FC
     Wait Until Element Is Visible    xpath=//*[@id="ospUsrOrPwNotCorrect"]    20
     Wait Until Page Contains    ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง    50
     ${response}    Get Text    xpath=//*[@id="ospUsrOrPwNotCorrect"]
-    Should Be Equal As Strings    ${response}    ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง
+    Should Be Equal As Strings    ${response}    ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง    #Login_SC    #[Setup]    Run Keywords    Open Browser    ${URL}    ${BROWSER}    #...    # AND    Set Selenium Speed    ${SELSPEED}
     [Teardown]    Close Browser
 
-AD_Cre_Receipt_Suc
-    [Setup]    Run Keywords    Open Browser    ${URL}    ${BROWSER}
+Branch-Create
+    [Setup]    Run Keywords    Open Browser    http://sit.ada-soft.com:8899/login    ${BROWSER}
     ...    AND    Set Selenium Speed    ${SELSPEED}
-    # open    https://dev.ada-soft.com/AdaSiamKubota/login
     Maximize Browser Window
     type    id=oetUsername    009
-    type    id=oetPassword    123456
-    #----
-    click    xpath=//button[@id='obtLOGConfirmLogin']/span
-    Wait Until Element Is Visible    xpath=//*[@id="spnCompanyName"]    20
-    Wait Until Page Contains    AdaSoft    50
-    ${response}    Get Text    xpath=//*[@id="spnCompanyName"]
-    Should Be Equal As Strings    ${response}    AdaSoft
-    #----คลิกข้อมูลหลัก
-    click    xpath=//div[@id='wrapper']/div[2]/div[3]/button/img
-    Wait Until Page Contains    ข้อมูลหลัก    50
-    #----คลิกข้อมูลจุดขาย
-    click    xpath=//*[@id="oNavMenuMAS"]/ul/li/ul/li[3]/a
-    Wait Until Page Contains    ข้อมูลจุดขาย    50
-    ${response}    Get Text    xpath=//*[@id="oNavMenuMAS"]/ul/li/ul/li[3]/a
-    Should Be Equal As Strings    ${response}    ข้อมูลจุดขาย
-    #----คลิกกำหนดหัวท้ายใบเสร็จ
-    click    xpath=//*[@id="MASSPS"]/ul/li[2]/a
-    Wait Until Page Contains    ค้นหา    50
-    #----เพิ่มข้อมูล
-    click    xpath=//*[@id="obtSmgAdd"]
-    Wait Until Page Contains    *ชื่อหัวท้ายใบเสร็จ    50
-    ${response}    Get Text    xpath=//*[@id="ofmAddSlipMessage"]/div/div[1]/div/div[5]/div/label
-    Should Be Equal As Strings    ${response}    *ชื่อหัวท้ายใบเสร็จ
-    #----เพิ่มหัวท้ายใบเสร็จ
-    click    id=oetSmgFontsSize
-    input text    id=oetSmgFontsSize    16
-    click    id=oetSmgTitle
-    input text    id=oetSmgTitle    SKC RC_SUC01
-    Execute JavaScript    window.scrollTo(0,200)
-    click    id=oetSmgSlipHead1
-    input text    id=oetSmgSlipHead1    Receipt/Tax
-    click    id=xWSmgAddHeadRow
-    click    id=oetSmgSlipHead2
-    input text    id=oetSmgSlipHead2    SiamKubota
-    click    id=oetSmgSlipEnd1
-    input text    id=oetSmgSlipEnd1    WELCOME
-    click    id=xWSmgAddEndRow
-    click    id=oetSmgSlipEnd2
-    input text    id=oetSmgSlipEnd2    THANK YOU
-    Execute JavaScript    window.scrollTo(0,0)
-    #----กดบันทึก
-    click    xpath=//*[@id="odvBtnAddEdit"]/div/button[1]
-    Wait Until Page Contains    หัวท้ายใบเสร็จ    50
-    click    id=oliSmgTitle
-    Wait Until Element Is Visible    xpath=//*[@id="oliSmgTitle"]    50
-    [Teardown]    Close Browser
-
-AD_Cre_Sale_Ch_Suc
-    [Setup]    Run Keywords    Open Browser    ${URL}    ${BROWSER}
-    ...    AND    Set Selenium Speed    ${SELSPEED}
-    # open    https://dev.ada-soft.com/AdaSiamKubota/login
-    Maximize Browser Window
-    type    id=oetUsername    009
-    type    id=oetPassword    123456
-    #----
-    click    xpath=//button[@id='obtLOGConfirmLogin']/span
-    Wait Until Element Is Visible    xpath=//*[@id="spnCompanyName"]    20
-    Wait Until Page Contains    AdaSoft   50
-    ${response}    Get Text    xpath=//*[@id="spnCompanyName"]
-    Should Be Equal As Strings    ${response}    AdaSoft
-    #----คลิกข้อมูลหลัก
-    click    xpath=//div[@id='wrapper']/div[2]/div[3]/button/img
-    Wait Until Page Contains    ข้อมูลหลัก    50
-    #----คลิกข้อมูลจุดขาย
-    click    xpath=//*[@id="oNavMenuMAS"]/ul/li/ul/li[3]/a
-    Wait Until Page Contains    ข้อมูลจุดขาย    50
-    ${response}    Get Text    xpath=//*[@id="oNavMenuMAS"]/ul/li/ul/li[3]/a
-    Should Be Equal As Strings    ${response}    ข้อมูลจุดขาย
-    #----คลิกช่องทางการขาย
-    click    xpath=//*[@id="MASSPS"]/ul/li[5]/a
-    Wait Until Page Contains    ค้นหา    50
-    #----เพิ่มข้อมูล
-    click    xpath=//*[@id="obtChnAdd"]
-    Wait Until Page Contains    *ชื่อช่องทางการขาย    50
-    ${response}    Get Text    xpath=//*[@id="ofmAddChanel"]/div/div/div/div[3]/div/label
-    Should Be Equal As Strings    ${response}    *ชื่อช่องทางการขาย
-    #----เพิ่มช่องทางการขาย
-    click    id=oetChnName
-    input text    id=oetChnName    SKC CS_SUC01
-    Execute JavaScript    window.scrollTo(0,200)
-    click    id=oimChnBrowseApp
-    #----แสดงข้อมูลระบบ
-    Wait Until Page Contains    แสดงข้อมูล : ระบบ    50
-    ${response}    Get Text    xpath=//*[@id="odvModalContent"]/div[1]/div/div[1]/label
-    Should Be Equal As Strings    ${response}    แสดงข้อมูล : ระบบ
-    click    //*[@id="otbBrowserList"]/tbody/tr[6]/td[2]
-    click    //*[@id="odvModalContent"]/div[1]/div/div[2]/button[1]
-    Execute JavaScript    window.scrollTo(0,0)
-    #----กดบันทึก
-    click    //*[@id="odvBtnAddEdit"]/div/button[1]
-    Wait Until Page Contains    ช่องทางการขาย    50
-    click    id=oliChnTitle
-    Wait Until Element Is Visible    xpath=//*[@id="oliChnTitle"]    50
-    [Teardown]    Close Browser
-
-AD_Cre_Receipt_Fail
-    [Setup]    Run Keywords    Open Browser    ${URL}    ${BROWSER}
-    ...    AND    Set Selenium Speed    ${SELSPEED}
-    # open    https://dev.ada-soft.com/AdaSiamKubota/login
-    Maximize Browser Window
-    type    id=oetUsername    009
-    type    id=oetPassword    123456
-    #----
-    click    xpath=//button[@id='obtLOGConfirmLogin']/span
-    Wait Until Element Is Visible    xpath=//*[@id="spnCompanyName"]    20
-    Wait Until Page Contains    AdaSoft   50
-    ${response}    Get Text    xpath=//*[@id="spnCompanyName"]
-    Should Be Equal As Strings    ${response}    AdaSoft
-    #----คลิกข้อมูลหลัก
-    click    xpath=//div[@id='wrapper']/div[2]/div[3]/button/img
-    Wait Until Page Contains    ข้อมูลหลัก    50
-    #----คลิกข้อมูลจุดขาย
-    click    xpath=//*[@id="oNavMenuMAS"]/ul/li/ul/li[3]/a
-    Wait Until Page Contains    ข้อมูลจุดขาย    50
-    ${response}    Get Text    xpath=//*[@id="oNavMenuMAS"]/ul/li/ul/li[3]/a
-    Should Be Equal As Strings    ${response}    ข้อมูลจุดขาย
-    #----คลิกกำหนดหัวท้ายใบเสร็จ
-    click    xpath=//*[@id="MASSPS"]/ul/li[2]/a
-    Wait Until Page Contains    ค้นหา    50
-    #----เพิ่มข้อมูล
-    click    xpath=//*[@id="obtSmgAdd"]
-    Wait Until Page Contains    *ชื่อหัวท้ายใบเสร็จ    50
-    ${response}    Get Text    xpath=//*[@id="ofmAddSlipMessage"]/div/div[1]/div/div[5]/div/label
-    Should Be Equal As Strings    ${response}    *ชื่อหัวท้ายใบเสร็จ
-    #----เพิ่มหัวท้ายใบเสร็จ
-    #----กดบันทึก
-    click    xpath=//*[@id="odvBtnAddEdit"]/div/button[1]
-    Wait Until Page Contains    กรุณากรอกขนาดตัวอักษร    50
-    click    id=oetSmgFontsSize
-    input text    id=oetSmgFontsSize    16
-    Wait Until Page Contains    กรุณากรอกชื่อหัวท้ายใบเสร็จ    50
-    click    id=oetSmgTitle
-    input text    id=oetSmgTitle    SKC RC_FAIL01
-    Execute JavaScript    window.scrollTo(0,200)
-    Wait Until Page Contains    กรุณากรอกชื่อหัวท้ายใบเสร็จ    50
-    click    id=oetSmgSlipHead1
-    input text    id=oetSmgSlipHead1    Receipt/Tax02
-    Wait Until Page Contains    กรุณากรอกชื่อหัวท้ายใบเสร็จ    50
-    click    id=oetSmgSlipEnd1
-    input text    id=oetSmgSlipEnd1    WELCOME02
-    click    id=xWSmgAddHeadRow
-    #----กดบันทึก
-    Execute JavaScript    window.scrollTo(0,0)
-    click    xpath=//*[@id="odvBtnAddEdit"]/div/button[1]
-    Wait Until Page Contains    กรุณากรอกชื่อหัวท้ายใบเสร็จ    50
-    Execute JavaScript    window.scrollTo(0,200)
-    click    id=oetSmgSlipHead2
-    input text    id=oetSmgSlipHead2    SiamKubota02
-    click    id=xWSmgAddEndRow
-    #----กดบันทึก
-    Execute JavaScript    window.scrollTo(0,0)
-    click    xpath=//*[@id="odvBtnAddEdit"]/div/button[1]
-    Wait Until Page Contains    กรุณากรอกชื่อหัวท้ายใบเสร็จ    50
-    Execute JavaScript    window.scrollTo(0,300)
-    click    id=oetSmgSlipEnd2
-    input text    id=oetSmgSlipEnd2    THANK YOU02
-    Execute JavaScript    window.scrollTo(0,0)
-    #----กดบันทึก
-    click    xpath=//*[@id="odvBtnAddEdit"]/div/button[1]
-    Wait Until Page Contains    หัวท้ายใบเสร็จ    50
-    click    id=oliSmgTitle
-    Wait Until Element Is Visible    xpath=//*[@id="oliSmgTitle"]    50
-    [Teardown]    Close Browser
-
-AD_Cre_Sale_Ch_Fail
-    [Setup]    Run Keywords    Open Browser    ${URL}    ${BROWSER}
-    ...    AND    Set Selenium Speed    ${SELSPEED}
-    # open    https://dev.ada-soft.com/AdaSiamKubota/login
-    Maximize Browser Window
-    type    id=oetUsername    009
-    type    id=oetPassword    123456
-    #----
-    click    xpath=//button[@id='obtLOGConfirmLogin']/span
-    Wait Until Element Is Visible    xpath=//*[@id="spnCompanyName"]    20
-    Wait Until Page Contains    AdaSoft   50
-    ${response}    Get Text    xpath=//*[@id="spnCompanyName"]
-    Should Be Equal As Strings    ${response}    AdaSoft
-    #----คลิกข้อมูลหลัก
-    click    xpath=//div[@id='wrapper']/div[2]/div[3]/button/img
-    Wait Until Page Contains    ข้อมูลหลัก    50
-    #----คลิกข้อมูลจุดขาย
-    click    xpath=//*[@id="oNavMenuMAS"]/ul/li/ul/li[3]/a
-    Wait Until Page Contains    ข้อมูลจุดขาย    50
-    ${response}    Get Text    xpath=//*[@id="oNavMenuMAS"]/ul/li/ul/li[3]/a
-    Should Be Equal As Strings    ${response}    ข้อมูลจุดขาย
-    #----คลิกช่องทางการขาย
-    click    xpath=//*[@id="MASSPS"]/ul/li[5]/a
-    Wait Until Page Contains    ค้นหา    50
-    #----เพิ่มข้อมูล
-    #----กดบันทึก
-    click    //*[@id="obtChnAdd"]
-    click    //*[@id="odvBtnAddEdit"]/div/button[1]
-    Wait Until Page Contains    กรุณากรอกชื่อหัวท้ายใบเสร็จ    50
-    Wait Until Page Contains    *ชื่อช่องทางการขาย    50
-    ${response}    Get Text    xpath=//*[@id="ofmAddChanel"]/div/div/div/div[3]/div/label
-    Should Be Equal As Strings    ${response}    *ชื่อช่องทางการขาย
-    #----เพิ่มช่องทางการขาย
-    click    id=oetChnName
-    input text    id=oetChnName    SKC CS_FAIL01
-    Execute JavaScript    window.scrollTo(0,200)
-    Wait Until Page Contains    กรุณากรอกระบบ    50
-    click    id=oimChnBrowseApp
-    #----แสดงข้อมูลระบบ
-    Wait Until Page Contains    แสดงข้อมูล : ระบบ    50
-    ${response}    Get Text    xpath=//*[@id="odvModalContent"]/div[1]/div/div[1]/label
-    Should Be Equal As Strings    ${response}    แสดงข้อมูล : ระบบ
-    click    //*[@id="otbBrowserList"]/tbody/tr[6]/td[2]
-    click    //*[@id="odvModalContent"]/div[1]/div/div[2]/button[1]
-    Execute JavaScript    window.scrollTo(0,0)
-    #----กดบันทึก
-    click    //*[@id="odvBtnAddEdit"]/div/button[1]
-    Wait Until Page Contains    ช่องทางการขาย    50
-    click    id=oliChnTitle
-    Wait Until Element Is Visible    xpath=//*[@id="oliChnTitle"]    50
-    [Teardown]    Close Browser
-
-AD_Create_SC
-    [Setup]    Run Keywords    Open Browser    ${URL}    ${BROWSER}
-    ...    AND    Set Selenium Speed    ${SELSPEED}
-    # open    https://dev.ada-soft.com/AdaSiamKubota/login
-    Maximize Browser Window
-    type    id=oetUsername    ${USERNAME}
-    type    id=oetPassword    ${PASSWORD}
-    #----
-    click    xpath=//button[@id='obtLOGConfirmLogin']/span
-    Wait Until Element Is Visible    xpath=//*[@id="spnCompanyName"]    20
-    Wait Until Page Contains    AdaSoft    50
-    ${response}    Get Text    xpath=//*[@id="spnCompanyName"]
-    Should Be Equal As Strings    ${response}    AdaSoft
-    #----คลิกข้อมูลหลัก
-    click    xpath=//div[@id='wrapper']/div[2]/div[3]/button/img
-    Wait Until Page Contains    ข้อมูลหลัก    50
-    #----คลิกข้อมูลจุดขาย
-    click    xpath=//*[@id="oNavMenuMAS"]/ul/li/ul/li[3]/a/span
-    Wait Until Page Contains    สื่อ,ข้อความ หน้าจอลูกค้า    50
-    ${response}    Get Text    xpath=//*[@id="MASSPS"]/ul/li[3]/a
-    Should Be Equal As Strings    ${response}    สื่อ,ข้อความ หน้าจอลูกค้า
-    #----คลิกสื่อ,ข้อความ หน้าจอลูกค้า
-    click    xpath=//*[@id="MASSPS"]/ul/li[3]/a
-    Wait Until Page Contains    ค้นหา    50
-    Sleep    5s
-    #${response}    Get Text    xpath=//*[@id="odvContentPageAdMessage"]/div[1]/div/div[1]/div/label
-    #Should Be Equal As Strings    ${response}    ค้นหา
-    #----เพิ่มข้อมูล
-    click    xpath=//*[@id="obtAdvAdd"]
-    sleep    5s
-    Wait Until Element Is Visible    xpath=//*[@id="obtBarSubmitAdv"]/div/button[1]    20
-    Wait Until Page Contains    รหัสโฆษณา    50
-    Wait Until Page Contains    บันทึก    50
-    ${response}    Get Text    xpath=//*[@id="ofmAddAdMessage"]/div/div/div[1]/label
-    Should Be Equal As Strings    ${response}    * รหัสโฆษณา
-    #----หน้ากรอกข้อมูล
-    click    id=oetAdvName
-    input text    id=oetAdvName    AD TEST
-    click    id=oetAdvMsg
-    Input Text    id=oetAdvMsg    สื่อโฆษณาทั่วไป
-    Sleep    5s
-    Wait Until Element Is Visible    xpath=//button[@type='submit']
-    #----กดบันทึก
-    click    xpath=//button[@type='submit']
-    Wait Until Element Is Visible    xpath=//*[@id="oetAdvName"]    50
-    Wait Until Page Contains    ชื่อโฆษณา    50
-    #${response}    Get Text    xpath=//*[@id="oetAdvName"]
-    #${ExceptionValue}    Get Element Attribute    xpath=//*[@id="oetAdvName"]    AD test
-    #Should Be Equal As Strings    ${ExceptionValue}    AD test
-    #---คลิก Title เพื่อกลับมาตรวจสอบข้อมูล
-    Sleep    5s
-    click    xpath=//*[@id="odvBtnAddEdit"]/button
-    Wait Until Element Is Visible    xpath=//*[@id="odvContentAdMessageData"]/div[1]/div/div/table/thead/tr/th[2]    50
-    Wait Until Page Contains    AD TEST    50
-    #${Value} =    Set Variable    AD test
-    #Run Keyword IF    ‘${Value}’ == Wait Until Page Contains
-    [Teardown]    Close Browser
-
-AD_Create_FC_NameAD
-    [Setup]    Run Keywords    Open Browser    ${URL}    ${BROWSER}
-    ...    AND    Set Selenium Speed    ${SELSPEED}
-    # open    https://dev.ada-soft.com/AdaSiamKubota/login
-    Maximize Browser Window
-    type    id=oetUsername    ${USERNAME}
-    type    id=oetPassword    ${PASSWORD}
-    #----
-    click    xpath=//button[@id='obtLOGConfirmLogin']/span
-    Wait Until Page Contains   AdaSoft   50
-    ${response}    Get Text    xpath=//*[@id="spnCompanyName"]
-    Should Be Equal As Strings    ${response}    AdaSoft
-    #----คลิกข้อมูลหลัก
-    click    xpath=//div[@id='wrapper']/div[2]/div[3]/button/img
-    Wait Until Page Contains    ข้อมูลหลัก    50
-    #----คลิกข้อมูลจุดขาย
-    click    xpath=//*[@id="oNavMenuMAS"]/ul/li/ul/li[3]/a/span
-    Wait Until Page Contains    สื่อ,ข้อความ หน้าจอลูกค้า    50
-    ${response}    Get Text    xpath=//*[@id="MASSPS"]/ul/li[3]/a
-    Should Be Equal As Strings    ${response}    สื่อ,ข้อความ หน้าจอลูกค้า
-    #----คลิกสื่อ,ข้อความ หน้าจอลูกค้า
-    click    xpath=//*[@id="MASSPS"]/ul/li[3]/a
-    Wait Until Page Contains    ค้นหา    50
-    sleep    5s
-    #${response}    Get Text    xpath=//*[@id="odvContentPageAdMessage"]/div[1]/div/div[1]/div/label
-    #Should Be Equal As Strings    ${response}    ค้นหา
-    #----เพิ่มข้อมูล
-    click    xpath=//*[@id="obtAdvAdd"]
-    #Wait Until Page Contains    บันทึก    50
-    Wait Until Page Contains    รหัสโฆษณา    50
-    ${response}    Get Text    xpath=//*[@id="ofmAddAdMessage"]/div/div/div[1]/label
-    Should Be Equal As Strings    ${response}    * รหัสโฆษณา
-    #----หน้ากรอกข้อมูล
-    click    id=oetAdvName
-    #input text    id=oetAdvName    AD TEST
-    #click    id=oetAdvMsg
-    Input Text    id=oetAdvMsg    สื่อโฆษณาทั่วไป
-    #----กดบันทึก
-    click    xpath=//button[@type='submit']
-    Wait Until Page Contains    ชื่อโฆษณา    50
-    ${response}    Get Text    xpath=//*[@id="oetAdvName-error"]
-    Should Be Equal As Strings    ${response}    กรุณากรอกชื่อ
-    [Teardown]    Close Browser
-
-AD_Create_FC_TextAD
-    [Setup]    Run Keywords    Open Browser    ${URL}    ${BROWSER}
-    ...    AND    Set Selenium Speed    ${SELSPEED}
-    # open    https://dev.ada-soft.com/AdaSiamKubota/login
-    Maximize Browser Window
-    type    id=oetUsername    ${USERNAME}
-    type    id=oetPassword    ${PASSWORD}
-    #----
-    click    xpath=//button[@id='obtLOGConfirmLogin']/span
-    Wait Until Page Contains    AdaSoft   50
-    ${response}    Get Text    xpath=//*[@id="spnCompanyName"]
-    Should Be Equal As Strings    ${response}    AdaSoft
-    #----คลิกข้อมูลหลัก
-    click    xpath=//div[@id='wrapper']/div[2]/div[3]/button/img
-    Wait Until Page Contains    ข้อมูลหลัก    50
-    #----คลิกข้อมูลจุดขาย
-    click    xpath=//*[@id="oNavMenuMAS"]/ul/li/ul/li[3]/a/span
-    Wait Until Page Contains    สื่อ,ข้อความ หน้าจอลูกค้า    50
-    ${response}    Get Text    xpath=//*[@id="MASSPS"]/ul/li[3]/a
-    Should Be Equal As Strings    ${response}    สื่อ,ข้อความ หน้าจอลูกค้า
-    #----คลิกสื่อ,ข้อความ หน้าจอลูกค้า
-    click    xpath=//*[@id="MASSPS"]/ul/li[3]/a
-    Wait Until Page Contains    ค้นหา    50
-    sleep    5s
-    #${response}    Get Text    xpath=//*[@id="odvContentPageAdMessage"]/div[1]/div/div[1]/div/label
-    #Should Be Equal As Strings    ${response}    ค้นหา
-    #----เพิ่มข้อมูล
-    click    xpath=//*[@id="obtAdvAdd"]
-    #Wait Until Page Contains    บันทึก    50
-    Wait Until Page Contains    รหัสโฆษณา    50
-    ${response}    Get Text    xpath=//*[@id="ofmAddAdMessage"]/div/div/div[1]/label
-    Should Be Equal As Strings    ${response}    * รหัสโฆษณา
-    sleep    5s
-    #----หน้ากรอกข้อมูล
-    click    id=oetAdvName
-    input text    id=oetAdvName    AD TEST
-    #click    id=oetAdvMsg
-    #Input Text    id=oetAdvMsg    สื่อโฆษณาทั่วไป
-    #----กดบันทึก
-    click    xpath=//button[@type='submit']
-    Wait Until Page Contains    ข้อความ    50
-    ${response}    Get Text    xpath=//*[@id="oetAdvMsg-error"]
-    Should Be Equal As Strings    ${response}    This field is required.
-    [Teardown]    Close Browser
-
-AD_Del
-    [Setup]    Run Keywords    Open Browser    ${URL}    ${BROWSER}
-    ...    AND    Set Selenium Speed    ${SELSPEED}
-    # open    https://dev.ada-soft.com/AdaSiamKubota/login
-    Maximize Browser Window
-    type    id=oetUsername    ${USERNAME}
-    type    id=oetPassword    ${PASSWORD}
-    #----
-    click    xpath=//button[@id='obtLOGConfirmLogin']/span
-    Wait Until Page Contains    AdaSoft   50
-    ${response}    Get Text    xpath=//*[@id="spnCompanyName"]
-    Should Be Equal As Strings    ${response}    AdaSoft
-    #----คลิกข้อมูลหลัก
-    click    xpath=//div[@id='wrapper']/div[2]/div[3]/button/img
-    Wait Until Page Contains    ข้อมูลหลัก    50
-    #----คลิกข้อมูลจุดขาย
-    click    xpath=//*[@id="oNavMenuMAS"]/ul/li/ul/li[3]/a/span
-    Wait Until Page Contains    สื่อ,ข้อความ หน้าจอลูกค้า    50
-    ${response}    Get Text    xpath=//*[@id="MASSPS"]/ul/li[3]/a
-    Should Be Equal As Strings    ${response}    สื่อ,ข้อความ หน้าจอลูกค้า
-    #----คลิกสื่อ,ข้อความ หน้าจอลูกค้า
-    click    xpath=//*[@id="MASSPS"]/ul/li[3]/a
-    Wait Until Page Contains    ค้นหา    50
-    #---ลบข้อมูลล่าสุดที่สร้าง
-    click    xpath=//*[@id="otrAdMessage0"]/td[8]/img
-    Wait Until Element Is Visible    xpath=//*[@id="odvModalDelAdMessage"]/div/div/div[1]/label    20
-    ${cf}    set variable    ยืนยันการลบข้อมูล : 010 ( AD test )
-    ${response}    Get Text    xpath=//*[@id="ospConfirmDelete"]
-    #Should Be Equal As Strings    ${response}    ยืนยันการลบข้อมูล : 010 ( AD test )
-    IF    "${response}" =="${cf}"
-    click    xpath=//*[@id="osmConfirm"]
-    sleep    5s
-    ELSE
-    click    xpath=//*[@id="odvModalDelAdMessage"]/div/div/div[3]/button[2]
-    sleep    5s
-    END
-   
-    [Teardown]    Close Browser
-
-Printer_SC
-    [Setup]    Run Keywords    Open Browser    ${URL}    ${BROWSER}
-    ...    AND    Set Selenium Speed    ${SELSPEED}
-    # open    https://dev.ada-soft.com/AdaSiamKubota/login
-    Maximize Browser Window
-    type    id=oetUsername    ${USERNAME}
-    type    id=oetPassword    ${PASSWORD}
-    #----
-    click    xpath=//button[@id='obtLOGConfirmLogin']/span
-    Wait Until Page Contains    AdaSoft   50
-    ${response}    Get Text    xpath=//*[@id="spnCompanyName"]
-    Should Be Equal As Strings    ${response}    AdaSoft
-    #----คลิกข้อมูลหลัก
-    click    xpath=//div[@id='wrapper']/div[2]/div[3]/button/img
-    Wait Until Page Contains    ข้อมูลหลัก    50
-    #----คลิกข้อมูลจุดขาย
-    click    xpath=//*[@id="oNavMenuMAS"]/ul/li/ul/li[3]/a/span
-    Wait Until Page Contains    เครื่องพิมพ์    50
-    ${response}    Get Text    xpath=//*[@id="MASSPS"]/ul/li[6]/a
-    Should Be Equal As Strings    ${response}    เครื่องพิมพ์
-    #----คลิกเครื่องพิมพ์
-    click    xpath=//*[@id="MASSPS"]/ul/li[6]/a
-    Wait Until Element Is Visible    xpath=//*[@id="oliSprTitle"]    50
-    Wait Until Page Contains    ปริ้นเตอร์    50
-    #---เพิ่มไม่กรอกข้อมูล
-    click    xpath=//*[@id="obtSprAdd"]
-    Wait Until Element Is Visible    xpath=//*[@id="oetSprName"]    50
-    click    xpath=//button[@type='submit']
-    Wait Until Element Is Visible    xpath=//*[@id="oetSprName-error"]    50
-    ${response}    Get Text    xpath=//*[@id="oetSprName-error"]
-    Should Be Equal As Strings    ${response}    กรุณากรอกชื่อปริ้นเตอร์
-    click    xpath=//*[@id="odvBtnAddEdit"]/button
-    #---เพิ่ม กรอกข้อมูล
-    click    xpath=//*[@id="obtSprAdd"]
-    Wait Until Element Is Visible    xpath=//*[@id="oetSprName"]    50
-    click    xpath=//*[@id="oetSprName"]
-    input text    id=oetSprName    Start-Bar printer
-    #---เลือกจากระบบ
-    click    xpath=//*[@id="ofmSetprinter"]/div/div[2]/div/div[2]/div/button
-    click    xpath=//*[@id="ofmSetprinter"]/div/div[2]/div/div[2]/div/div/div/ul/li[2]/a/span[2]
-    #---เลือกจากแอพ
-    click    xpath=//*[@id="ofmSetprinter"]/div/div[2]/div/div[2]/div/button
-    Wait Until Element Is Visible    xpath=//*[@id="ofmSetprinter"]/div/div[2]/div/div[2]/div/div/div/ul/li[1]/a/span[2]    50
-    click    xpath=//*[@id="ofmSetprinter"]/div/div[2]/div/div[2]/div/div/div/ul/li[1]/a/span[2]
-    Wait Until Element Is Visible    xpath=//*[@id="obtBrowseRefApplication"]    50
-    click    xpath=//*[@id="obtBrowseRefApplication"]
-    Wait Until Element Is Visible    xpath=//*[@id="odvModalContent2"]/div[1]/div/div[1]/label    50
-    Wait Until Page Contains    แสดงข้อมูล : Port Printer    50
-    #---เลือกปริ้นเตอร์รุ่น TM81
-    click    xpath=//table[@id='otbBrowserList']/tbody/tr[10]/td[2]
-    Wait Until Element Is Visible    xpath=//button[@onclick="JCNxConfirmSelected('oCmpBrowsePortPrint')"]    50
-    click    xpath=//button[@onclick="JCNxConfirmSelected('oCmpBrowsePortPrint')"]
-    Wait Until Element Is Visible    xpath=//*[@id="odvBtnAddEdit"]/div/button[1]    50
-    click    xpath=//*[@id="odvBtnAddEdit"]/div/button[1]
-    Wait Until Element Is Visible    xpath=//*[@id="odvBtnAddEdit"]/button    50
-    click    xpath=//*[@id="odvBtnAddEdit"]/button
-    [Teardown]    Close Browser
-
-Printer_Edit_Del
-    [Setup]    Run Keywords    Open Browser    ${URL}    ${BROWSER}
-    ...    AND    Set Selenium Speed    ${SELSPEED}
-    # open    https://dev.ada-soft.com/AdaSiamKubota/login
-    Maximize Browser Window
-    type    id=oetUsername    ${USERNAME}
-    type    id=oetPassword    ${PASSWORD}
-    #----
-    ${ECK}    Get WebElement    xpath=//button[@id='obtLOGConfirmLogin']/span
-    Execute Javascript    arguments[0].click();    ARGUMENTS    ${ECK}
-    #click    xpath=//button[@id='obtLOGConfirmLogin']/span
-    Wait Until Page Contains    AdaSoft    50
-    ${response}    Get Text    xpath=//*[@id="spnCompanyName"]
-    Should Be Equal As Strings    ${response}    AdaSoft
-    #----คลิกข้อมูลหลัก
-    ${ECK}    Get WebElement    xpath=//div[@id='wrapper']/div[2]/div[3]/button/img
-    Execute Javascript    arguments[0].click();    ARGUMENTS    ${ECK}
-    #click    xpath=//div[@id='wrapper']/div[2]/div[3]/button/img
-    Wait Until Page Contains    ข้อมูลหลัก    50
-    #----คลิกข้อมูลจุดขาย
-    ${ECK}    Get WebElement    xpath=//*[@id="oNavMenuMAS"]/ul/li/ul/li[3]/a/span
-    Execute Javascript    arguments[0].click();    ARGUMENTS    ${ECK}
-    #click    xpath=//*[@id="oNavMenuMAS"]/ul/li/ul/li[3]/a/span
-    Wait Until Page Contains    เครื่องพิมพ์    50
-    ${response}    Get Text    xpath=//*[@id="MASSPS"]/ul/li[6]/a
-    Should Be Equal As Strings    ${response}    เครื่องพิมพ์
-    #----คลิกเครื่องพิมพ์
-    ${ECK}    Get WebElement    xpath=//*[@id="MASSPS"]/ul/li[6]/a
-    Execute Javascript    arguments[0].click();    ARGUMENTS    ${ECK}
-    #click    xpath=//*[@id="MASSPS"]/ul/li[6]/a
-    Wait Until Element Is Visible    xpath=//*[@id="oliSprTitle"]    50
-    Wait Until Page Contains    ปริ้นเตอร์    50
-    ${ECK}    Get WebElement    xpath=//button[@onclick="JSvSetprinterClickPage('next')"]
-    Execute Javascript    arguments[0].click();    ARGUMENTS    ${ECK}
-    #click    xpath=//button[@onclick="JSvSetprinterClickPage('next')"]
-    Wait Until Element Is Visible    xpath=//*[@id="oliSprTitle"]    50
-    #---แก้ไขชื่อเครื่องพิมพ์
-    ${EDCK}    Get WebElement    xpath=//img[@title='แก้ไข']
-    Execute Javascript    arguments[0].click();    ARGUMENTS    ${EDCK}
-    #click    xpath=//img[@title='แก้ไข']
-    Wait Until Element Is Visible    xpath=//*[@id="oliSprTitleEdit"]/a    50
-    Wait Until Page Contains    แก้ไขปริ้นเตอร์    50
-    ${EDCK}    Get WebElement    xpath=//*[@id="oetSprName"]
-    Execute Javascript    arguments[0].click();    ARGUMENTS    ${EDCK}
-    #click    xpath=//*[@id="oetSprName"]
-    clear Element Text    xpath=//*[@id="oetSprName"]
-    input text    id=oetSprName    Bar-Printer
-    ${ECK}    Get WebElement    xpath=//*[@id="odvBtnAddEdit"]/div/button[1]
-    Execute Javascript    arguments[0].click();    ARGUMENTS    ${ECK}
-    #click    xpath=//*[@id="odvBtnAddEdit"]/div/button[1]
-    Wait Until Element Is Visible    xpath=//*[@id="odvBtnAddEdit"]/button    50
-    ${ECK}    Get WebElement    xpath=//*[@id="odvBtnAddEdit"]/button
-    Execute Javascript    arguments[0].click();    ARGUMENTS    ${ECK}
-    #click    xpath=//*[@id="odvBtnAddEdit"]/button
-    #---ลบเครื่องพิมพ์
-    Wait Until Element Is Visible    xpath=//*[@id="oliSprTitle"]    50
-    Wait Until Page Contains    ปริ้นเตอร์    50
-    ${ECK}    Get WebElement    xpath=//button[@onclick="JSvSetprinterClickPage('next')"]
-    Execute Javascript    arguments[0].click();    ARGUMENTS    ${ECK}
-    #click    xpath=//button[@onclick="JSvSetprinterClickPage('next')"]
-    Wait Until Element Is Visible    xpath=//*[@id="oliSprTitle"]    50
-    ${ECK}    Get WebElement    xpath=//img[@title='ลบ']
-    Execute Javascript    arguments[0].click();    ARGUMENTS    ${ECK}
-    #click    xpath=//img[@title='ลบ']
-    Wait Until Element Is Visible    xpath=//*[@id="ospConfirmDelete"]    50
-    #---ถ้าเครื่องพิมพ์ชื่อ Bar-Printer ให้ลบ
-    #${response}    Get Text    xpath=//*[@id="ospConfirmDelete"]
-    #Should Be Equal As Strings    ${response}    ยืนยันการลบข้อมูล :018 (Bar-Printer)
-    Wait Until Element Is Visible    xpath=//*[@id="osmConfirm"]    50
-    ${pNameChk}    Set Variable    ยืนยันการลบข้อมูล :030 (Bar-Printer)    #----ค่า Default ที่ต้องการเปรียบเทียบ
-    ${pName}    Get Text    xpath=//*[@id="ospConfirmDelete"]
-    IF    "${pName}" == "${pNameChk}"
-    TextEQ
-    sleep    5s
-    ELSE
-    TextNEQ
-    sleep    5s
-    END
-    [Teardown]    Close Browser
-
-PosRegister
-    [Setup]    Run Keywords    Open Browser    https://dev.ada-soft.com/AdaSiamKubota/login    ${BROWSER}
-    ...    AND    Set Selenium Speed    ${SELSPEED}
-    # open    https://dev.ada-soft.com/AdaSiamKubota/login
-    Maximize Browser Window
-    click    id=oetUsername
-    type    id=oetUsername    009
-    click    id=oetPassword
     type    id=oetPassword    123456
     click    id=obtLOGConfirmLogin
-    open    https://dev.ada-soft.com/AdaSiamKubota/
+    open    http://sit.ada-soft.com:8899/
+    Wait Until Page Contains    AdaSoft    50
+    ${response}    Get Text    id=spnCompanyName
+    Should Be Equal As Strings    ${response}    AdaSoft
     click    xpath=//div[@id='wrapper']/div[2]/div[3]/button/img
-    click    xpath=//nav[@id='oNavMenuMAS']/ul/li/ul/li[3]/a/span
-    click    link=ลงทะเบียนจุดขาย
-    Wait Until Element Is Visible    id=ocbListItem1
-    # เลือก checkbox
-    click    id=ocbListItem1
-    click    xpath=//div[@id='odvBtnAddEdit']/div/button
-    Wait Until Element Is Visible    id=odvPosRegister
-    #เลือก listbox
-    click    xpath=//div[@id='odvPosRegister']/div/div/div/div/div/div/div/div/button/div/div/div
-    Select From List By Label    id=ocmStaApv    อนุมัติแล้ว
-    # กด textbox
-    click    id=oetSearchAll
-    type    id=oetSearchAll    004040000110BF48BBB13AD0342AAC
-    click    xpath=//img[contains(@src,'https://dev.ada-soft.com/AdaSiamKubota//application/modules/common/assets/images/icons/search-24.png')]
-    click    id=ocbListItem0
-    click    xpath=//div[@id='odvBtnAddEdit']/div/button[2]
-    click    xpath=//div[@id='odvModalConCancel']/div/div/div[3]/button
+    click    xpath=//nav[@id='oNavMenuMAS']/ul/li/ul/li[2]/a/span
+    click    link=สาขา
+    Wait Until Page Contains    ข้อมูลสาขา    50
+    ${response}    Get Text    xpath=//*[@id="oliBCHTitle"]
+    Should Be Equal As Strings    ${response}    ข้อมูลสาขา
+    sleep    3s
+    click    xpath=//*[@id="odvBtnBchInfo"]/button
+    Wait Until Page Contains    เพิ่มสาขา    50
+    ${response}    Get Text    xpath=//*[@id="oliBCHAdd"]/a
+    Should Be Equal As Strings    ${response}    เพิ่มสาขา
+    click    xpath=//*[@id="odvBchAutoGenCode"]/div/label/span
+    type    id=oetBchCode    TEST2Automation-Test    #ทดสอบความยาวเกิน 5
+    ${SAV}    Get WebElement    xpath=//*[@id="odvBtnCmpEditInfo"]/div/button[1]
+    Execute Javascript    arguments[0].click();    ARGUMENTS    ${SAV}
+    ${pNameChk}    Set Variable    กรุณากรอกชื่อสาขา    #----ค่า Default ที่ต้องการเปรียบเทียบ #เช็คไม่กรอกชื่อ
+    ${pName}    Get Text    id=oetBchName-error
+    IF    "${pName}" == "${pNameChk}"    #ถ้าไม่พบข้อมูลให้เพิ่ม
+    type    id=oetBchName    TESTER - Create by Automation
+    END
+    ${pNameChk}    Set Variable    กรุณากรอกรหัสสาขาที่จดทะเบียนไว้กับสรรพากร    #----ค่า Default ที่ต้องการเปรียบเทียบ #เช็คไม่กรอกรหัสสาขาที่จดทะเบียนไว้กับสรรพากร
+    ${pName}    Get Text    id=oetBchRegNo-error
+    IF    "${pName}" == "${pNameChk}"    #ถ้าไม่พบข้อมูลให้เพิ่ม
+    type    id=oetBchRegNo    0123456
+    END
+    click    xpath=//button[@id='oimBchBrowseCountry']/img
+    Wait Until Page Contains    แสดงข้อมูล : ประเทศ    50
+    click    xpath=//table[@id='otbBrowserList']/tbody/tr/td[2]    #เลือกประเทศไทย
+    click    xpath=//button[@onclick="JCNxConfirmSelected('oBchBrowseCountry')"]
+    click    xpath=//button[@id='oimBchBrowsePpl']/img
+    Wait Until Page Contains    แสดงข้อมูล : กลุ่มราคาสินค้า    50
+    click    xpath=//table[@id='otbBrowserList']/tbody/tr[3]/td[2]    #เลือกกลุ่มราคาประเทศไทย
+    click    xpath=//button[@onclick="JCNxConfirmSelected('oBchBrowsePpl')"]
+    sleep    1s
+    #click    xpath=//*[@id="odvBtnCmpEditInfo"]/div/button[1]    #ปุ่มบันทึก
+    ${SAV}    Get WebElement    xpath=//*[@id="odvBtnCmpEditInfo"]/div/button[1]
+    Execute Javascript    arguments[0].click();    ARGUMENTS    ${SAV}
+    Wait Until Page Contains    ข้อมูลทั่วไป    50
+    click    xpath=//*[@id="oliBCHTitle"]
+    Wait Until Page Contains    ค้นหา    50
+    click    xpath=//*[@id="otrBranch0"]/td[10]/img
+    Wait Until Page Contains    ที่อยู่    50
+    click    link=ที่อยู่    #คลิกที่อยู่
+    Wait Until Page Contains    ชื่อที่อยู่    50
+    ${response}    Get Text    xpath=//*[@id="otbBranchAddressTableList"]/thead/tr/th[2]
+    Should Be Equal As Strings    ${response}    ชื่อที่อยู่
+    ${pNameChk}    Set Variable    ไม่พบข้อมูล    #----ค่า Default ที่ต้องการเปรียบเทียบ
+    ${pName}    Get Text    xpath=//*[@id="otbBranchAddressTableList"]/tbody/tr/td
+    IF    "${pName}" == "${pNameChk}"    #ถ้าไม่พบข้อมูลให้เพิ่ม
+    click    id=obtBranchAddressCallPageAdd
+    sleep    1s
+    type    id=oetBranchAddressName    TESTER Company - Create by Automation-01
+    type    id=oetBranchAddressTaxNo    212224238248
+    type    id=oetBranchAddressWeb    www.google.co.th
+    type    id=oetBranchAddressNo    99
+    type    id=oetBranchAddressVillage    Sinthanee Create by Automation
+    type    id=oetBranchAddressRoad    รอบเวียง
+    type    id=oetBranchAddressSoi    ภัคมินฮา 33
+    Execute JavaScript    window.scrollTo(0,500)
+    click    id=obtBranchAddressBrowseProvince
+    Wait Until Page Contains    แสดงข้อมูล : จังหวัด    50
+    click    xpath=//table[@id='otbBrowserList']/tbody/tr/td[2]    #เลือกเชียงราย
+    click    xpath=//button[@onclick="JCNxConfirmSelected('oBranchAddressProvinceOption')"]
+    click    id=obtBranchAddressBrowseDistrict
+    Wait Until Page Contains    แสดงข้อมูล : อำเภอ/เขต    50
+    click    xpath=//table[@id='otbBrowserList']/tbody/tr/td[2]    #เลือกอำเภอเมือง
+    click    xpath=//button[@onclick="JCNxConfirmSelected('oBranchAddressDistrictOption')"]
+    click    id=obtBranchAddressBrowseSubDistrict
+    Wait Until Page Contains    แสดงข้อมูล : ตำบล/แขวง    50
+    click    xpath=//table[@id='otbBrowserList']/tbody/tr/td[2]    #เลือกตำบลรอบเวียง
+    click    xpath=//button[@onclick="JCNxConfirmSelected('oBranchAddressSubDistrictOption')"]
+    type    id=oetBranchAddressPostCode    57000
+    type    id=oetBranchAddressRmk    Create by Automation
+    Execute JavaScript    window.scrollTo(0,0)
+    sleep    3s
+    click    id=obtBranchAddressSave
+    sleep    3s
+    click    id=oliBCHTitle
+    sleep    3s
+    ELSE    #ให้ Edit
+    click    xpath=//table[@id='otbBranchAddressTableList']/tbody/tr/td[6]/img
+    sleep    1s
+    type    id=oetBranchAddressName    Company Create by Automation-02
+    type    id=oetBranchAddressTaxNo    4144284312
+    type    id=oetBranchAddressWeb    www.facebook.co.th
+    type    id=oetBranchAddressNo    555
+    type    id=oetBranchAddressVillage    Lumpinee vill condo Create by Automation
+    type    id=oetBranchAddressRoad    ลาดพร้าว
+    type    id=oetBranchAddressSoi    122
+    Execute JavaScript    window.scrollTo(0,500)
+    #click    id=obtBranchAddressBrowseProvince
+    #Wait Until Page Contains    แสดงข้อมูล : จังหวัด    50
+    #click    xpath=//table[@id='otbBrowserList']/tbody/tr[2]/td[2]
+    #click    xpath=//button[@onclick="JCNxConfirmSelected('oBranchAddressProvinceOption')"]
+    #click    id=obtBranchAddressBrowseDistrict
+    #Wait Until Page Contains    แสดงข้อมูล : อำเภอ/เขต    50
+    #click    xpath=//table[@id='otbBrowserList']/tbody/tr/td[2]
+    #click    xpath=//button[@onclick="JCNxConfirmSelected('oBranchAddressDistrictOption')"]
+    #click    id=obtBranchAddressBrowseSubDistrict
+    #Wait Until Page Contains    แสดงข้อมูล : ตำบล/แขวง    50
+    #click    xpath=//table[@id='otbBrowserList']/tbody/tr/td[2]
+    #click    xpath=//button[@onclick="JCNxConfirmSelected('oBranchAddressSubDistrictOption')"]
+    type    id=oetBranchAddressPostCode    10310
+    type    id=oetBranchAddressRmk    Create by Automation
+    Execute JavaScript    window.scrollTo(0,0)
+    sleep    3s
+    click    id=obtBranchAddressSave
+    sleep    3s
+    click    id=oliBCHTitle
+    sleep    3s
+    END
     [Teardown]    Close Browser
 
-AddPos-checkErr
-    [Setup]    Run Keywords     Open Browser     https://dev.ada-soft.com/AdaSiamKubota/    ${BROWSER}
-    Set Selenium Speed  ${SELSPEED}
-    # open    https://dev.ada-soft.com/AdaSiamKubota/login
+Warehouse-Create
+    [Setup]    Run Keywords    Open Browser    http://sit.ada-soft.com:8899/login    ${BROWSER}
+    ...    AND    Set Selenium Speed    ${SELSPEED}
     Maximize Browser Window
-    Input Text  id=oetUsername    009
-    Input Text  id=oetPassword    123456
-    Click Button    id=obtLOGConfirmLogin
-#    open    https://dev.ada-soft.com/AdaSiamKubota/
-    Wait Until Element Is Visible   id=spnCompanyName
-    click Element   xpath=//div[@id='wrapper']/div[2]/div[3]/button/img
-    click Element   xpath=//nav[@id='oNavMenuMAS']/ul/li/ul/li[3]/a/span
-    click Element     link=จุดขาย
-    # หน้าpos -ปุ่มเพิ่ม
-    click Element     xpath=//div[@id='odvBtnPosInfo']/button
-    # ตรวจสอบ ชื่อเครื่องจุดขาย
-    click Button    xpath=//button[@type='submit']
-    Wait Until Page Contains    ชื่อเครื่องจุดขาย
-     # หน้าaddpos - เพิ่ม ชื่อเครื่องจุดขาย
-    click Button    id=oetPosName
-    Input Text    id=oetPosName    pos03
-    click Element    xpath=//img[contains(@src,'https://dev.ada-soft.com/AdaSiamKubota//application/modules/common/assets/images/icons/find-24.png')]
-    click Element    xpath=//div[@id='odvModalContent']/div[2]/div[3]/div[2]/div/button[3]
-    click Element    xpath=//table[@id='otbBrowserList']/tbody/tr/td[2]
-    click Element    xpath=//button[@onclick="JCNxConfirmSelected('oSaleMachineBrowseBch')"]
-    click Element    xpath=//button[@id='oimPosBrowseChanel']/img
-    click Element    xpath=//div[@id='odvModalContent']/div[2]/div[3]/div[2]/div/button[3]
-    #click Element    xpath=//table[@id='otbBrowserList']/tbody/tr[5]/td[2]
-    click Element    xpath=//*[@id="otbBrowserList"]/tbody/tr[3]/td[2]
-    click Element    xpath=//button[@onclick="JCNxConfirmSelected('oBrowsePosOption')"]
-    # ตรวจสอบ หมายเลขจดทะเบียน
-    Input Text  id=oetPosRegNo  PO
-    Clear Element Text  id=oetPosRegNo    
-    click Button    xpath=//button[@type='submit']
-    Wait Until Page Contains   กรุณากรอกหมายเลขจดทะเบียน
-    # หน้าaddpos - เพิ่ม หมายเลขจดทะเบียน   
-    click Button    id=oetPosRegNo
-    Input Text    id=oetPosRegNo    pos03num
-    click Element    xpath=//button[@id='obtSlipmessage']/img
-    #click Element    xpath=//table[@id='otbBrowserList']/tbody/tr[5]/td[2]
-    click Element     xpath=//*[@id="otbBrowserList"]/tbody/tr[3]/td[2]
-    click Button    xpath=//button[@onclick="JCNxConfirmSelected('oSlipMessage')"]
-    click Button    xpath=//button[@type='submit']
-    click Element    id=oliPosTitle
+    type    id=oetUsername    009
+    type    id=oetPassword    123456
+    click    id=obtLOGConfirmLogin
+    open    http://sit.ada-soft.com:8899/
+    Wait Until Page Contains    AdaSoft    50
+    ${response}    Get Text    id=spnCompanyName
+    Should Be Equal As Strings    ${response}    AdaSoft
+    click    xpath=//div[@id='wrapper']/div[2]/div[3]/button/img
+    click    xpath=//nav[@id='oNavMenuMAS']/ul/li/ul/li[2]/a/span
+    click    link=คลังสินค้า
+    Wait Until Page Contains    คลังสินค้า    50
+    sleep    2s
+    #click element    xpath=//*[@id="odvBtnWahInfo"]/button[2]
+    ${CK}    Get WebElement    xpath=//*[@id="odvBtnWahInfo"]/button[2]
+    Execute Javascript    arguments[0].click();    ARGUMENTS    ${CK}
+    #Wait Until Element Is Visible    xpaht=//*[@id="odvBtnCmpEditInfo"]/div/button[1]    20
+    #Wait Until Element Is Visible    xpath=//*[@id="odvWahAutoGenCode"]/div/label/span    20
+    Wait Until Page Contains    สร้างอัตโนมัติ    50
+    #${response}    Get Text    xpath=//*[@id="odvWahAutoGenCode"]/div/label/span
+    #Should Be Equal As Strings    ${response}    สร้างอัตโนมัติ
+    #click Element    xpaht=//*[@id="odvWahAutoGenCode"]/div/label    #<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< Issue
+    #Unselect Checkbox    name=ocbWahAutoGenCode
+    #type    id=oetWahCode    WHCQA
+    click Element    xpath=//img[contains(@src,'http://sit.ada-soft.com:8899/application/modules/common/assets/images/icons/find-24.png')]
+    click Element    xpath=//table[@id='otbBrowserList']/tbody/tr[5]/td
+    click Element    xpath=//button[@onclick="JCNxConfirmSelected('oWahBrowseBchCreated')"]
+    click Element    id=oetWahName
+    type    id=oetWahName    WHCQA Create by Automaion Tester
+    click Element    xpath=//form[@id='ofmAddWarehouse']/div/div/div/div[5]/div/button/div
+    click Element    link=คลังทั่วไป
+    click Element    xpath=//form[@id='ofmAddWarehouse']/div/div/div/div[10]/div/button/div/div/div
+    click Element    xpath=//*[@id="ofmAddWarehouse"]/div/div/div/div[10]/div/div/div/ul/li[2]/a
+    #select    id=ocmWahStaPrcStk    ตัดสต๊อก
+    click element    xpath=//*[@id="ofmAddWarehouse"]/div/div
+    click element    xpath=//form[@id='ofmAddWarehouse']/div/div/div/div[11]/div/button/div/div/div
+    click element    xpath=//*[@id="ofmAddWarehouse"]/div/div/div/div[11]/div/div/div/ul/li[3]/a
+    #select    id=ocmWahStaChkStk    เช็คออนไลน์ (หลังบ้าน)
+    click Element    xpath=//div[@id='odvBtnCmpEditInfo']/div/button
+    sleep    2s
+    click Element    id=obtBarBack
+    #Warehouse-Del
+    [Teardown]    Close Browser
+
+POS-Create
+    [Setup]    Run Keywords    Open Browser    http://sit.ada-soft.com:8899/login    ${BROWSER}
+    ...    AND    Set Selenium Speed    ${SELSPEED}
+    Maximize Browser Window
+    type    id=oetUsername    009
+    type    id=oetPassword    123456
+    click    id=obtLOGConfirmLogin
+    open    http://sit.ada-soft.com:8899/
+    Wait Until Page Contains    AdaSoft    50
+    ${response}    Get Text    id=spnCompanyName
+    Should Be Equal As Strings    ${response}    AdaSoft    #<<<<<<<<<<<<<<<<<<<<<<
+    click element    xpath=//*[@id="wrapper"]/div[2]/div[3]/button/img
+    click    xpath=//nav[@id='oNavMenuMAS']/ul/li/ul/li[3]/a/i
+    click    link=จุดขาย
+    Wait Until Page Contains    เครื่องจุดขาย    50
+    ${response}    Get Text    xpath=//*[@id="oliPosTitle"]
+    Should Be Equal As Strings    ${response}    เครื่องจุดขาย
+    sleep    3s
+    click    xpath=//div[@id='odvBtnPosInfo']/button
+    Wait Until Page Contains    เพิ่ม    50
+    type    id=oetPosName    T-POS
+    click    xpath=//img[contains(@src,'http://sit.ada-soft.com:8899//application/modules/common/assets/images/icons/find-24.png')]
+    Wait Until Page Contains    แสดงข้อมูล : สาขา    50
+    ${response}    Get Text    xpath=//*[@id="odvModalContent"]/div[1]/div/div[1]/label
+    Should Be Equal As Strings    ${response}    แสดงข้อมูล : สาขา
+    click    xpath=//table[@id='otbBrowserList']/tbody/tr/td[2]    #สาขา
+    sleep    1s
+    click    xpath=//button[@onclick="JCNxConfirmSelected('oSaleMachineBrowseBch')"]
+    click    xpath=//button[@id='oimPosBrowseChanel']/img
+    ${response}    Get Text    xpath=//*[@id="odvModalContent"]/div[1]/div/div[1]/label
+    Should Be Equal As Strings    ${response}    แสดงข้อมูล : ช่องทางขาย
+    click    xpath=//div[@id='odvModalContent']/div[2]/div[3]/div[2]/div/button[4]
+    sleep    1s
+    click    xpath=//table[@id='otbBrowserList']/tbody/tr[5]/td[2]    #ช่องทางการขาย
+    click    xpath=//button[@onclick="JCNxConfirmSelected('oBrowsePosOption')"]
+    sleep    1s
+    type    id=oetPosRegNo    TESTER-01 Automation
+    Execute JavaScript    window.scrollTo(0,500)
+    click    xpath=//form[@id='ofmAddSaleMachine']/div/div/div[7]/div/button/div/div/div
+    click    xpath=//form[@id='ofmAddSaleMachine']/div/div/div[7]/div/div/div[2]/ul/li/a
+    click    xpath=//img[contains(@src,'http://sit.ada-soft.com:8899/application/modules/common/assets/images/icons/find-24.png')]
+    sleep    1s
+    ${response}    Get Text    xpath=//*[@id="odvModalContent"]/div[1]/div/div[1]/label
+    Should Be Equal As Strings    ${response}    แสดงข้อมูล : คลังสินค้า
+    click    xpath=//table[@id='otbBrowserList']/tbody/tr/td[2]
+    sleep    1s
+    click    xpath=//button[@onclick="JCNxConfirmSelected('oBrowsePosOption')"]
+    sleep    1s
+    click    xpath=//button[@id='obtSlipmessage']/img
+    sleep    1s
+    ${response}    Get Text    xpath=//*[@id="odvModalContent"]/div[1]/div/div[1]/label
+    Should Be Equal As Strings    ${response}    แสดงข้อมูล : หัวท้ายใบเสร็จ
+    click    xpath=//div[@id='odvModalContent']/div[2]/div[3]/div[2]/div/button[3]
+    sleep    1s
+    click    xpath=//table[@id='otbBrowserList']/tbody/tr[5]/td[2]
+    sleep    1s
+    click    xpath=//button[@onclick="JCNxConfirmSelected('oSlipMessage')"]
+    sleep    1s
+    Execute JavaScript    window.scrollTo(0,0)
+    click    xpath=//*[@id="odvBtnAddEdit"]/div/div/button[1]
+    #sleep    1s
+    #click    xpath=//*[@id="odvBtnAddEdit"]/div/button
+    [Teardown]    Close Browser
+
+Branch-Del
+    [Setup]    Run Keywords    Open Browser    http://sit.ada-soft.com:8899/login    ${BROWSER}
+    ...    AND    Set Selenium Speed    ${SELSPEED}
+    Maximize Browser Window
+    type    id=oetUsername    009
+    type    id=oetPassword    123456
+    click    id=obtLOGConfirmLogin
+    open    http://sit.ada-soft.com:8899/
+    Wait Until Page Contains    AdaSoft    50
+    ${response}    Get Text    id=spnCompanyName
+    Should Be Equal As Strings    ${response}    AdaSoft    #<<<<<<<<<<<<<<<<<<<<<<
+    click    xpath=//div[@id='wrapper']/div[2]/div[3]/button/img
+    click    xpath=//nav[@id='oNavMenuMAS']/ul/li/ul/li[2]/a/span
+    click    link=สาขา
+    Wait Until Page Contains    ข้อมูลสาขา    50
+    click    xpath=//*[@id="otrBranch0"]/td[9]/img
+    Wait Until Element Is Visible    xpath=//*[@id="ospConfirmDelete"]    50
+    ${pNameChk}    Set Variable    ยืนยันการลบข้อมูล :TEST2 (TESTER - Create by Automation) ใช่หรือไม่?    #----ค่า Default ที่ต้องการเปรียบเทียบ
+    ${pName}    Get Text    xpath=//*[@id="ospConfirmDelete"]
+    IF    "${pName}" == "${pNameChk}"
+    click    xpath=//*[@id="osmConfirm"]
+    sleep    3s
+    ELSE
+    click    xpath=//*[@id="odvmodaldeleteBranch"]/div/div/div[3]/button[2]
+    sleep    3s
+    END
+    [Teardown]    Close Browser
 
 *** Keywords ***
 TextEQ
