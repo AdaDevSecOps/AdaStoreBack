@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation     SKC AUTOMATION TEST
-Library           Selenium2Library    implicit_wait=50
+Library           Selenium2Library    implicit_wait=300
 
 *** Variables ***
 ${URL}            http://sit.ada-soft.com:8899/login
@@ -18,8 +18,8 @@ Login-FailCase
     type    id=oetUsername    009
     type    id=oetPassword    123456789
     click    xpath=//button[@id='obtLOGConfirmLogin']/span
-    Wait Until Element Is Visible    xpath=//*[@id="ospUsrOrPwNotCorrect"]    20
-    Wait Until Page Contains    ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง    50
+    Wait Until Element Is Visible    xpath=//*[@id="ospUsrOrPwNotCorrect"]    300
+    Wait Until Page Contains    ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง    300
     ${response}    Get Text    xpath=//*[@id="ospUsrOrPwNotCorrect"]
     Should Be Equal As Strings    ${response}    ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง    #Login_SC    #[Setup]    Run Keywords    Open Browser    ${URL}    ${BROWSER}    #...    # AND    Set Selenium Speed    ${SELSPEED}
     [Teardown]    Close Browser
@@ -32,18 +32,18 @@ Branch-Create
     type    id=oetPassword    123456
     click    id=obtLOGConfirmLogin
     open    http://sit.ada-soft.com:8899/
-    Wait Until Page Contains    AdaSoft    70
+    Wait Until Page Contains    AdaSoft    300
     ${response}    Get Text    id=spnCompanyName
     Should Be Equal As Strings    ${response}    AdaSoft
     click    xpath=//div[@id='wrapper']/div[2]/div[3]/button/img
     click    xpath=//nav[@id='oNavMenuMAS']/ul/li/ul/li[2]/a/span
     click    link=สาขา
-    Wait Until Page Contains    ข้อมูลสาขา    50
+    Wait Until Page Contains    ข้อมูลสาขา    300
     ${response}    Get Text    xpath=//*[@id="oliBCHTitle"]
     Should Be Equal As Strings    ${response}    ข้อมูลสาขา
     sleep    3s
     click    xpath=//*[@id="odvBtnBchInfo"]/button
-    Wait Until Page Contains    เพิ่มสาขา    50
+    Wait Until Page Contains    เพิ่มสาขา    300
     ${response}    Get Text    xpath=//*[@id="oliBCHAdd"]/a
     Should Be Equal As Strings    ${response}    เพิ่มสาขา
     click    xpath=//*[@id="odvBchAutoGenCode"]/div/label/span
@@ -61,24 +61,24 @@ Branch-Create
     type    id=oetBchRegNo    0123456
     END
     click    xpath=//button[@id='oimBchBrowseCountry']/img
-    Wait Until Page Contains    แสดงข้อมูล : ประเทศ    50
+    Wait Until Page Contains    แสดงข้อมูล : ประเทศ    300
     click    xpath=//table[@id='otbBrowserList']/tbody/tr/td[2]    #เลือกประเทศไทย
     click    xpath=//button[@onclick="JCNxConfirmSelected('oBchBrowseCountry')"]
     click    xpath=//button[@id='oimBchBrowsePpl']/img
-    Wait Until Page Contains    แสดงข้อมูล : กลุ่มราคาสินค้า    50
+    Wait Until Page Contains    แสดงข้อมูล : กลุ่มราคาสินค้า    300
     click    xpath=//table[@id='otbBrowserList']/tbody/tr[3]/td[2]    #เลือกกลุ่มราคาประเทศไทย
     click    xpath=//button[@onclick="JCNxConfirmSelected('oBchBrowsePpl')"]
     sleep    1s
     #click    xpath=//*[@id="odvBtnCmpEditInfo"]/div/button[1]    #ปุ่มบันทึก
     ${SAV}    Get WebElement    xpath=//*[@id="odvBtnCmpEditInfo"]/div/button[1]
     Execute Javascript    arguments[0].click();    ARGUMENTS    ${SAV}
-    Wait Until Page Contains    ข้อมูลทั่วไป    50
+    Wait Until Page Contains    ข้อมูลทั่วไป    300
     click    xpath=//*[@id="oliBCHTitle"]
-    Wait Until Page Contains    ค้นหา    50
+    Wait Until Page Contains    ค้นหา    300
     click    xpath=//*[@id="otrBranch0"]/td[10]/img
-    Wait Until Page Contains    ที่อยู่    50
+    Wait Until Page Contains    ที่อยู่    300
     click    link=ที่อยู่    #คลิกที่อยู่
-    Wait Until Page Contains    ชื่อที่อยู่    50
+    Wait Until Page Contains    ชื่อที่อยู่    300
     ${response}    Get Text    xpath=//*[@id="otbBranchAddressTableList"]/thead/tr/th[2]
     Should Be Equal As Strings    ${response}    ชื่อที่อยู่
     ${pNameChk}    Set Variable    ไม่พบข้อมูล    #----ค่า Default ที่ต้องการเปรียบเทียบ
@@ -95,15 +95,15 @@ Branch-Create
     type    id=oetBranchAddressSoi    ภัคมินฮา 33
     Execute JavaScript    window.scrollTo(0,500)
     click    id=obtBranchAddressBrowseProvince
-    Wait Until Page Contains    แสดงข้อมูล : จังหวัด    50
+    Wait Until Page Contains    แสดงข้อมูล : จังหวัด    300
     click    xpath=//table[@id='otbBrowserList']/tbody/tr/td[2]    #เลือกเชียงราย
     click    xpath=//button[@onclick="JCNxConfirmSelected('oBranchAddressProvinceOption')"]
     click    id=obtBranchAddressBrowseDistrict
-    Wait Until Page Contains    แสดงข้อมูล : อำเภอ/เขต    50
+    Wait Until Page Contains    แสดงข้อมูล : อำเภอ/เขต    300
     click    xpath=//table[@id='otbBrowserList']/tbody/tr/td[2]    #เลือกอำเภอเมือง
     click    xpath=//button[@onclick="JCNxConfirmSelected('oBranchAddressDistrictOption')"]
     click    id=obtBranchAddressBrowseSubDistrict
-    Wait Until Page Contains    แสดงข้อมูล : ตำบล/แขวง    50
+    Wait Until Page Contains    แสดงข้อมูล : ตำบล/แขวง    300
     click    xpath=//table[@id='otbBrowserList']/tbody/tr/td[2]    #เลือกตำบลรอบเวียง
     click    xpath=//button[@onclick="JCNxConfirmSelected('oBranchAddressSubDistrictOption')"]
     type    id=oetBranchAddressPostCode    57000
@@ -156,20 +156,20 @@ Warehouse-Create
     type    id=oetPassword    123456
     click    id=obtLOGConfirmLogin
     open    http://sit.ada-soft.com:8899/
-    Wait Until Page Contains    AdaSoft    50
+    Wait Until Page Contains    AdaSoft    300
     ${response}    Get Text    id=spnCompanyName
     Should Be Equal As Strings    ${response}    AdaSoft
     click    xpath=//div[@id='wrapper']/div[2]/div[3]/button/img
     click    xpath=//nav[@id='oNavMenuMAS']/ul/li/ul/li[2]/a/span
     click    link=คลังสินค้า
-    Wait Until Page Contains    คลังสินค้า    50
+    Wait Until Page Contains    คลังสินค้า    300
     sleep    2s
     #click element    xpath=//*[@id="odvBtnWahInfo"]/button[2]
     ${CK}    Get WebElement    xpath=//*[@id="odvBtnWahInfo"]/button[2]
     Execute Javascript    arguments[0].click();    ARGUMENTS    ${CK}
     #Wait Until Element Is Visible    xpaht=//*[@id="odvBtnCmpEditInfo"]/div/button[1]    20
     #Wait Until Element Is Visible    xpath=//*[@id="odvWahAutoGenCode"]/div/label/span    20
-    Wait Until Page Contains    สร้างอัตโนมัติ    50
+    Wait Until Page Contains    สร้างอัตโนมัติ    300
     #${response}    Get Text    xpath=//*[@id="odvWahAutoGenCode"]/div/label/span
     #Should Be Equal As Strings    ${response}    สร้างอัตโนมัติ
     #click Element    xpaht=//*[@id="odvWahAutoGenCode"]/div/label    #<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< Issue
@@ -203,21 +203,21 @@ POS-Create
     type    id=oetPassword    123456
     click    id=obtLOGConfirmLogin
     open    http://sit.ada-soft.com:8899/
-    Wait Until Page Contains    AdaSoft    50
+    Wait Until Page Contains    AdaSoft    300
     ${response}    Get Text    id=spnCompanyName
     Should Be Equal As Strings    ${response}    AdaSoft    #<<<<<<<<<<<<<<<<<<<<<<
     click element    xpath=//*[@id="wrapper"]/div[2]/div[3]/button/img
     click    xpath=//nav[@id='oNavMenuMAS']/ul/li/ul/li[3]/a/i
     click    link=จุดขาย
-    Wait Until Page Contains    เครื่องจุดขาย    50
+    Wait Until Page Contains    เครื่องจุดขาย    300
     ${response}    Get Text    xpath=//*[@id="oliPosTitle"]
     Should Be Equal As Strings    ${response}    เครื่องจุดขาย
     sleep    3s
     click    xpath=//div[@id='odvBtnPosInfo']/button
-    Wait Until Page Contains    เพิ่ม    50
+    Wait Until Page Contains    เพิ่ม    300
     type    id=oetPosName    T-POS
     click    xpath=//img[contains(@src,'http://sit.ada-soft.com:8899//application/modules/common/assets/images/icons/find-24.png')]
-    Wait Until Page Contains    แสดงข้อมูล : สาขา    50
+    Wait Until Page Contains    แสดงข้อมูล : สาขา    300
     ${response}    Get Text    xpath=//*[@id="odvModalContent"]/div[1]/div/div[1]/label
     Should Be Equal As Strings    ${response}    แสดงข้อมูล : สาขา
     click    xpath=//table[@id='otbBrowserList']/tbody/tr/td[2]    #สาขา
@@ -267,15 +267,15 @@ Branch-Del
     type    id=oetPassword    123456
     click    id=obtLOGConfirmLogin
     open    http://sit.ada-soft.com:8899/
-    Wait Until Page Contains    AdaSoft    50
+    Wait Until Page Contains    AdaSoft    300
     ${response}    Get Text    id=spnCompanyName
     Should Be Equal As Strings    ${response}    AdaSoft    #<<<<<<<<<<<<<<<<<<<<<<
     click    xpath=//div[@id='wrapper']/div[2]/div[3]/button/img
     click    xpath=//nav[@id='oNavMenuMAS']/ul/li/ul/li[2]/a/span
     click    link=สาขา
-    Wait Until Page Contains    ข้อมูลสาขา    50
+    Wait Until Page Contains    ข้อมูลสาขา    300
     click    xpath=//*[@id="otrBranch0"]/td[9]/img
-    Wait Until Element Is Visible    xpath=//*[@id="ospConfirmDelete"]    50
+    Wait Until Element Is Visible    xpath=//*[@id="ospConfirmDelete"]    300
     ${pNameChk}    Set Variable    ยืนยันการลบข้อมูล :TEST2 (TESTER - Create by Automation) ใช่หรือไม่?    #----ค่า Default ที่ต้องการเปรียบเทียบ
     ${pName}    Get Text    xpath=//*[@id="ospConfirmDelete"]
     IF    "${pName}" == "${pNameChk}"
