@@ -257,32 +257,35 @@ POS-Create
     click    xpath=//*[@id="odvBtnAddEdit"]/div/div/button[1]
     #sleep    1s
     #click    xpath=//*[@id="odvBtnAddEdit"]/div/button
-    #    [Teardown]    Close Browser
-    #Branch-Del
-    #    [Setup]    Run Keywords    Open Browser    http://sit.ada-soft.com:8899/login    ${BROWSER}
-    #    ...    # AND    Set Selenium Speed
-    #    ${SELSPEED}
-    #    Maximize Browser Window
-    #    type    id=oetUsername    009
-    #    type    id=oetPassword    123456
-    #    click    id=obtLOGConfirmLogin
-    #    open    http://sit.ada-soft.com:8899/
-    #    Wait Until Page Contains    AdaSoft    300
-    #    ${response}    Get Text    id=spnCompanyName
-    #    Should Be Equal As Strings    ${response}    AdaSoft    #<<<<<<<<<<<<<<<<<<<<<<
-    #    click    xpath=//div[@id='wrapper']/div[2]/div[3]/button/img
-    #    click    xpath=//nav[@id='oNavMenuMAS']/ul/li/ul/li[2]/a/span
-    #    click    link=สาขา    #    Wait Until Page Contains    ข้อมูลสาขา    300
-    #    click    xpath=//*[@id="otrBranch0"]/td[9]/img
-    #    Wait Until Element Is Visible    xpath=//*[@id="ospConfirmDelete"]    300
-    #    ${pNameChk}    Set Variable    ยืนยันการลบข้อมูล :TEST2 (TESTER - Create by Automation) ใช่หรือไม่?    #----ค่า Default ที่ต้องการเปรียบเทียบ
-    #    ${pName}    Get Text    xpath=//*[@id="ospConfirmDelete"]
-    #    IF    "${pName}" == "${pNameChk}"
-    #    click    xpath=//*[@id="osmConfirm"]    #    sleep    3s    #    # ELSE
-    #    click    xpath=//*[@id="odvmodaldeleteBranch"]/div/div/div[3]/button[2]
-    #    sleep    3s
-    #    END
     [Teardown]    Close Browser
+
+#Branch-Del
+#    [Setup]    Run Keywords    Open Browser    http://sit.ada-soft.com:8899/login    ${BROWSER}
+#    ...    AND    Set Selenium Speed    ${SELSPEED}
+#    Maximize Browser Window
+#    type    id=oetUsername    009
+#    type    id=oetPassword    123456
+#    click    id=obtLOGConfirmLogin
+#    open    http://sit.ada-soft.com:8899/
+#    Wait Until Page Contains    AdaSoft    300
+#    ${response}    Get Text    id=spnCompanyName
+#    Should Be Equal As Strings    ${response}    AdaSoft    #<<<<<<<<<<<<<<<<<<<<<<
+#    click    xpath=//div[@id='wrapper']/div[2]/div[3]/button/img
+#    click    xpath=//nav[@id='oNavMenuMAS']/ul/li/ul/li[2]/a/span
+#    click    link=สาขา
+#    Wait Until Page Contains    ข้อมูลสาขา    300
+#    click    xpath=//*[@id="otrBranch0"]/td[9]/img
+#    Wait Until Element Is Visible    xpath=//*[@id="ospConfirmDelete"]    300
+#    ${pNameChk}    Set Variable    ยืนยันการลบข้อมูล :TEST2 (TESTER - Create by Automation) ใช่หรือไม่?    #----ค่า Default ที่ต้องการเปรียบเทียบ
+#    ${pName}    Get Text    xpath=//*[@id="ospConfirmDelete"]
+#    IF    "${pName}" == "${pNameChk}"
+#    click    xpath=//*[@id="osmConfirm"]
+#    sleep    3s
+#    ELSE
+#    click    xpath=//*[@id="odvmodaldeleteBranch"]/div/div/div[3]/button[2]
+#    sleep    3s
+#    END
+#    [Teardown]    Close Browser
 
 *** Keywords ***
 TextEQ
