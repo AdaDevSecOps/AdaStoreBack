@@ -16,7 +16,7 @@ Login-FailCase
     [Setup]    Run Keywords    Open Browser    ${URL}    ${BROWSER}
     ...    AND    Set Selenium Speed    ${SELSPEED}
     Maximize Browser Window
-    Execute javascript    document.body.style.zoom="60%"
+    Execute javascript    document.body.style.zoom="80%"
     type    id=oetUsername    009
     type    id=oetPassword    123456789
     click    xpath=//button[@id='obtLOGConfirmLogin']/span
@@ -30,7 +30,7 @@ Branch-Create
     [Setup]    Run Keywords    Open Browser    http://sit.ada-soft.com:8899/login    ${BROWSER}
     ...    AND    Set Selenium Speed    ${SELSPEED}
     Maximize Browser Window
-    Execute javascript    document.body.style.zoom="60%"
+    Execute javascript    document.body.style.zoom="80%"
     type    id=oetUsername    009
     type    id=oetPassword    123456
     click    id=obtLOGConfirmLogin
@@ -155,7 +155,7 @@ Warehouse-Create
     [Setup]    Run Keywords    Open Browser    ${URL}     ${BROWSER}
     ...    AND    Set Selenium Speed    ${SELSPEED}
     Maximize Browser Window
-    Execute javascript    document.body.style.zoom="60%"
+    Execute javascript    document.body.style.zoom="80%"
     type    id=oetUsername    009
     type    id=oetPassword    123456
     click    id=obtLOGConfirmLogin
@@ -205,7 +205,7 @@ POS-Create
     [Setup]    Run Keywords    Open Browser    ${URL}     ${BROWSER}
     ...    AND    Set Selenium Speed    ${SELSPEED}
     Maximize Browser Window
-    Execute javascript    document.body.style.zoom="60%"
+    Execute javascript    document.body.style.zoom="80%"
     type    id=oetUsername    009
     type    id=oetPassword    123456
     click    id=obtLOGConfirmLogin
@@ -272,7 +272,7 @@ POS-Create
 #    [Setup]    Run Keywords    Open Browser    http://sit.ada-soft.com:8899/login    ${BROWSER}
 #    ...    AND    Set Selenium Speed    ${SELSPEED}
 #    Maximize Browser Window
-#    Execute javascript    document.body.style.zoom="60%"
+#    Execute javascript    document.body.style.zoom="80%"
 #    type    id=oetUsername    009
 #    type    id=oetPassword    123456
 #    click    id=obtLOGConfirmLogin
