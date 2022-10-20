@@ -149,7 +149,7 @@ Branch-Create
     [Teardown]    Close Browser
 
 Warehouse-Create
-    [Setup]    Run Keywords    Open Browser    http://sit.ada-soft.com:8899/login    ${BROWSER}
+    [Setup]    Run Keywords    Open Browser    ${URL}     ${BROWSER}
     ...    AND    Set Selenium Speed    ${SELSPEED}
     Maximize Browser Window
     type    id=oetUsername    009
@@ -192,17 +192,18 @@ Warehouse-Create
     #select    id=ocmWahStaChkStk    เช็คออนไลน์ (หลังบ้าน)
 <<<<<<< HEAD
     click Element    xpath=//div[@id='odvBtnCmpEditInfo']/div/button
-    Execute JavaScript    window.scrollTo(0,0)
+    
 =======
     #click Element    xpath=//div[@id='odvBtnCmpEditInfo']/div/button
 >>>>>>> a2ff553faa9405eead8448390389eecd5ced15bb
     sleep    2s
+    Execute JavaScript    window.scrollTo(0,0)
     click Element    id=obtBarBack
     #Warehouse-Del
     [Teardown]    Close Browser
 
 POS-Create
-    [Setup]    Run Keywords    Open Browser    http://sit.ada-soft.com:8899/login    ${BROWSER}
+    [Setup]    Run Keywords    Open Browser    ${URL}     ${BROWSER}
     ...    AND    Set Selenium Speed    ${SELSPEED}
     Maximize Browser Window
     type    id=oetUsername    009
