@@ -9,7 +9,7 @@ ${SELSPEED}       0.5s
 ${USERNAME}       009
 ${PASSWORD}       123456
 ${NPASS}          123456789
-${SCREEN}         Execute javascript    document.body.style.zoom="60%"
+${SCREEN}         document.body.style.zoom="60%"
 
 *** Test Cases ***
 Login-FailCase
@@ -169,7 +169,6 @@ Warehouse-Create
     #click element    xpath=//*[@id="odvBtnWahInfo"]/button[2]
     ${CK}    Get WebElement    xpath=//*[@id="odvBtnWahInfo"]/button[2]
     Execute Javascript    arguments[0].click();    ARGUMENTS    ${CK}
-    Wait Until Element Is Visible    xpaht=//*[@id="odvBtnCmpEditInfo"]/div/button[1]    20
     Wait Until Element Is Visible    xpath=//*[@id="odvWahAutoGenCode"]/div/label/span    20
     Wait Until Page Contains    สร้างอัตโนมัติ    300
     ${response}    Get Text    xpath=//*[@id="odvWahAutoGenCode"]/div/label/span
@@ -200,7 +199,7 @@ Warehouse-Create
     [Teardown]    Close Browser
 
 POS-Create
-    [Setup]    Run Keywords    Open Browser    ${URL}     ${BROWSER}
+    [Setup]    Run Keywords    Open Browser    ${URL}    ${BROWSER}
     ...    AND    Set Selenium Speed    ${SELSPEED}
     Maximize Browser Window
     #Execute javascript    document.body.style.zoom="80%"
@@ -220,7 +219,7 @@ POS-Create
     click    xpath=//div[@id='odvBtnPosInfo']/button
     Wait Until Page Contains    เพิ่ม    300
     type    id=oetPosName    T-POS
-    click    xpath=//img[contains(@src,'http://sit.ada-soft.com:8899//application/modules/common/assets/images/icons/find-24.png')]
+    click    id=oimPosBrowseBch
     Wait Until Page Contains    แสดงข้อมูล : สาขา    300
     ${response}    Get Text    xpath=//*[@id="odvModalContent"]/div[1]/div/div[1]/label
     Should Be Equal As Strings    ${response}    แสดงข้อมูล : สาขา
@@ -261,37 +260,17 @@ POS-Create
     Execute JavaScript    window.scrollTo(0,0)
     click    xpath=//*[@id="odvBtnAddEdit"]/div/div/button[1]
     sleep    1s
-    click    xpath=//*[@id="odvBtnAddEdit"]/div/button
+    click    xpath=//*[@id="odvBtnAddEdit"]/div/button    #Branch-Del    #    [Setup]    Run Keywords    Open Browser    http://sit.ada-soft.com:8899/login    ${BROWSER}    #    ...    # AND    Set Selenium Speed    ${SELSPEED}    #    Maximize Browser Window    #
+    ...    # Execute javascript    document.body.style.zoom="80%"    #    type    id=oetUsername    009    #    type    id=oetPassword    123456    #    click    id=obtLOGConfirmLogin    #    open    http://sit.ada-soft.com:8899/
+    ...    #    Wait Until Page Contains    AdaSoft    300    #    ${response}    Get Text    id=spnCompanyName    #    Should Be Equal As Strings    ${response}    AdaSoft    #<<<<<<<<<<<<<<<<<<<<<<    #    click    xpath=//div[@id='wrapper']/div[2]/div[3]/button/img
+    ...    #    click    xpath=//nav[@id='oNavMenuMAS']/ul/li/ul/li[2]/a/span    #    click    link=สาขา    #    Wait Until Page Contains    ข้อมูลสาขา    300    #    click    xpath=//*[@id="otrBranch0"]/td[9]/img    #    Wait Until Element Is Visible    xpath=//*[@id="ospConfirmDelete"]
+    ...    # 300    #    ${pNameChk}    Set Variable    ยืนยันการลบข้อมูล :TEST2 (TESTER - Create by Automation) ใช่หรือไม่?    #----ค่า Default ที่ต้องการเปรียบเทียบ    #    ${pName}    Get Text    xpath=//*[@id="ospConfirmDelete"]    #    IF    "${pName}" == "${pNameChk}"    #    click    xpath=//*[@id="osmConfirm"]
+    ...    #    sleep    3s    #    # ELSE
+    #    click    xpath=//*[@id="odvmodaldeleteBranch"]/div/div/div[3]/button[2]
+    #    sleep    3s
+    #    END
+    #    [Teardown]    Close Browser
     [Teardown]    Close Browser
-
-#Branch-Del
-#    [Setup]    Run Keywords    Open Browser    http://sit.ada-soft.com:8899/login    ${BROWSER}
-#    ...    AND    Set Selenium Speed    ${SELSPEED}
-#    Maximize Browser Window
-#    Execute javascript    document.body.style.zoom="80%"
-#    type    id=oetUsername    009
-#    type    id=oetPassword    123456
-#    click    id=obtLOGConfirmLogin
-#    open    http://sit.ada-soft.com:8899/
-#    Wait Until Page Contains    AdaSoft    300
-#    ${response}    Get Text    id=spnCompanyName
-#    Should Be Equal As Strings    ${response}    AdaSoft    #<<<<<<<<<<<<<<<<<<<<<<
-#    click    xpath=//div[@id='wrapper']/div[2]/div[3]/button/img
-#    click    xpath=//nav[@id='oNavMenuMAS']/ul/li/ul/li[2]/a/span
-#    click    link=สาขา
-#    Wait Until Page Contains    ข้อมูลสาขา    300
-#    click    xpath=//*[@id="otrBranch0"]/td[9]/img
-#    Wait Until Element Is Visible    xpath=//*[@id="ospConfirmDelete"]    300
-#    ${pNameChk}    Set Variable    ยืนยันการลบข้อมูล :TEST2 (TESTER - Create by Automation) ใช่หรือไม่?    #----ค่า Default ที่ต้องการเปรียบเทียบ
-#    ${pName}    Get Text    xpath=//*[@id="ospConfirmDelete"]
-#    IF    "${pName}" == "${pNameChk}"
-#    click    xpath=//*[@id="osmConfirm"]
-#    sleep    3s
-#    ELSE
-#    click    xpath=//*[@id="odvmodaldeleteBranch"]/div/div/div[3]/button[2]
-#    sleep    3s
-#    END
-#    [Teardown]    Close Browser
 
 *** Keywords ***
 TextEQ
