@@ -175,6 +175,7 @@ Warehouse-Create
     #click Element    xpaht=//*[@id="odvWahAutoGenCode"]/div/label    #<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< Issue
     #Unselect Checkbox    name=ocbWahAutoGenCode
     #type    id=oetWahCode    WHCQA
+    Wait Until Page Contains    โหลดหน้าคลัง    300
     click Element    xpath=//img[contains(@src,'http://sit.ada-soft.com:8899/application/modules/common/assets/images/icons/find-24.png')]
     click Element    xpath=//table[@id='otbBrowserList']/tbody/tr[5]/td
     click Element    xpath=//button[@onclick="JCNxConfirmSelected('oWahBrowseBchCreated')"]
