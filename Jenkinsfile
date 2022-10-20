@@ -101,29 +101,29 @@ pipeline
         // }
 
 
-        stage('Excute Robot')
-        {
-            steps
-            {
-                echo 'Excute Robot...'
-                script
-                {
-                    // bat 'cd "C:/ProgramData/Jenkins/.jenkins/workspace/QA automation"'
-                    bat 'robot skc.robot'
-                   step(
-                    [
-                        $class : 'RobotPublisher',
-                        outputPath : '',
-                        outputFileName : "*.xml",
-                        disableArchiveOutput : false,
-                        passThreshold : 100,
-                        unstableThreshold: 95.0,
-                        otherFiles : "*.png",
-                    ]
-                )
-                }
-            }
-        }
+        // stage('Excute Robot')
+        // {
+        //     steps
+        //     {
+        //         echo 'Excute Robot...'
+        //         script
+        //         {
+        //             // bat 'cd "C:/ProgramData/Jenkins/.jenkins/workspace/QA automation"'
+        //             bat 'robot skc.robot'
+        //            step(
+        //             [
+        //                 $class : 'RobotPublisher',
+        //                 outputPath : '',
+        //                 outputFileName : "*.xml",
+        //                 disableArchiveOutput : false,
+        //                 passThreshold : 100,
+        //                 unstableThreshold: 95.0,
+        //                 otherFiles : "*.png",
+        //             ]
+        //         )
+        //         }
+        //     }
+        // }
 
         // stage('Tests Container') {
 
@@ -146,32 +146,32 @@ pipeline
         // }
 
 
-    //    stage('Stop Container')
-    //     {
-    //         steps
-    //         {
-    //             echo 'Stop Container...'
-    //             script
-    //             {
-    //                     bat 'docker stop adastoreback-web'
+       stage('Stop Container')
+        {
+            steps
+            {
+                echo 'Stop Container...'
+                script
+                {
+                        bat 'docker stop adastoreback-web'
 
-    //             }
-    //         }
-    //     }
+                }
+            }
+        }
 
 
-    //    stage('Remove Container')
-    //     {
-    //         steps
-    //         {
-    //             echo 'Remove Container...'
-    //             script
-    //             {
-    //                     bat 'docker rm adastoreback-web'
+       stage('Remove Container')
+        {
+            steps
+            {
+                echo 'Remove Container...'
+                script
+                {
+                        bat 'docker rm adastoreback-web'
 
-    //             }
-    //         }
-    //     }
+                }
+            }
+        }
 
 
 
