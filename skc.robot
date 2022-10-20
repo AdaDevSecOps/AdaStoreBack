@@ -173,9 +173,6 @@ Warehouse-Create
     Wait Until Page Contains    สร้างอัตโนมัติ    300
     ${response}    Get Text    xpath=//*[@id="odvWahAutoGenCode"]/div/label/span
     Should Be Equal As Strings    ${response}    สร้างอัตโนมัติ
-    click Element    xpaht=//*[@id="odvWahAutoGenCode"]/div/label    #<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< Issue
-    Unselect Checkbox    name=ocbWahAutoGenCode
-    type    id=oetWahCode    WHCQA
     Execute JavaScript    window.scrollTo(0,500)
     click Element    xpath=//img[contains(@src,'http://sit.ada-soft.com:8899/application/modules/common/assets/images/icons/find-24.png')]
     click Element    xpath=//table[@id='otbBrowserList']/tbody/tr[5]/td
@@ -232,15 +229,32 @@ POS-Create
     click    xpath=//div[@id='odvModalContent']/div[2]/div[3]/div[2]/div/button[4]
     sleep    1s
     click    xpath=//table[@id='otbBrowserList']/tbody/tr[5]/td[2]    #ช่องทางการขาย
-    click    xpath=//button[@onclick="JCNxConfirmSelected('oBrowsePosOption')"]
+    click    xpath=//*[@id="odvModalContent"]/div[1]/div/div[2]/button[1]
     sleep    1s
-    type    id=oetPosRegNo    TESTER-01 Automation
     Execute JavaScript    window.scrollTo(0,500)
-    click    xpath=//form[@id='ofmAddSaleMachine']/div/div/div[7]/div/button/div/div/div
-    click    xpath=//form[@id='ofmAddSaleMachine']/div/div/div[7]/div/div/div[2]/ul/li/a
-    click    xpath=//img[contains(@src,'http://sit.ada-soft.com:8899/application/modules/common/assets/images/icons/find-24.png')]
+    type    id=oetPosRegNo    TESTER-01 Automation
+    click    xpath=//form[@id='ofmAddSaleMachine']/div/div/div[7]/div/button/div/div/div    #ประเภทจุดขาย
+    click    xpath=//form[@id='ofmAddSaleMachine']/div/div/div[7]/div/div/div[2]/ul/li/a    #เลือกประเภทจุดขาย
+    #
+    Execute JavaScript    window.scrollTo(0,500)
+    click     id=obtBchBrowseWah
+    ${pNameChk}    Set Variable    ไม่พบข้อมูล    #----ค่า Default ที่ต้องการเปรียบเทียบ
+    ${pName}    Get Text    xpath=//*[@id="otbBrowserList"]/tbody/tr/td
+    IF    "${pName}" == "${pNameChk}"    #ถ้าไม่พบข้อมูลให้เพิ่ม
+    click    xpath=//*[@id="odvModalContent"]/div[2]/div[1]/div[2]/button
+    Wait Until Page Contains    เพิ่มคลังสินค้า    300   
+    type    id=oetWahName     TESTER WHEREHOUSE
+    #>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> เริ่มหน้าเพิ่มจุดขายย่อย
+    click     id=oimBrowsePOS 
+    sleep    2s
+    click    xpath=//*[@id="otbBrowserList"]/tbody/tr[1]/td[2]
+    sleep    2s
+    click    xpath=//*[@id="odvModalContent2"]/div[1]/div/div[2]/button[1]
+    sleep    2s
+    click     id=odvBchBtnGroup
+    #>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> จบหน้าเพิ่มจุดขายย่อย
+    #click    xpath=//img[contains(@src,'http://sit.ada-soft.com:8899/application/modules/common/assets/images/icons/find-24.png')]
     sleep    1s
-    Execute JavaScript    window.scrollTo(0,1000)
     ${response}    Get Text    xpath=//*[@id="odvModalContent"]/div[1]/div/div[1]/label
     Should Be Equal As Strings    ${response}    แสดงข้อมูล : คลังสินค้า
     click    xpath=//table[@id='otbBrowserList']/tbody/tr/td[2]
