@@ -175,7 +175,6 @@ Warehouse-Create
     #click Element    xpaht=//*[@id="odvWahAutoGenCode"]/div/label    #<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< Issue
     #Unselect Checkbox    name=ocbWahAutoGenCode
     #type    id=oetWahCode    WHCQA
-    Wait Until Page Contains    โหลดหน้าคลัง    300
     click Element    xpath=//img[contains(@src,'http://sit.ada-soft.com:8899/application/modules/common/assets/images/icons/find-24.png')]
     click Element    xpath=//table[@id='otbBrowserList']/tbody/tr[5]/td
     click Element    xpath=//button[@onclick="JCNxConfirmSelected('oWahBrowseBchCreated')"]
@@ -185,12 +184,6 @@ Warehouse-Create
     click Element    link=คลังทั่วไป
     click Element    xpath=//form[@id='ofmAddWarehouse']/div/div/div/div[10]/div/button/div/div/div
     click Element    xpath=//*[@id="ofmAddWarehouse"]/div/div/div/div[10]/div/div/div/ul/li[2]/a
-    #select    id=ocmWahStaPrcStk    ตัดสต๊อก
-    click element    xpath=//*[@id="ofmAddWarehouse"]/div/div
-    click element    xpath=//form[@id='ofmAddWarehouse']/div/div/div/div[11]/div/button/div/div/div
-    click element    xpath=//*[@id="ofmAddWarehouse"]/div/div/div/div[11]/div/div/div/ul/li[3]/a
-    #select    id=ocmWahStaChkStk    เช็คออนไลน์ (หลังบ้าน)
-    click Element    xpath=//div[@id='odvBtnCmpEditInfo']/div/button
     sleep    2s
     click Element    id=obtBarBack
     #Warehouse-Del
