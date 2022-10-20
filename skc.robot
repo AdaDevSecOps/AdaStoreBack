@@ -186,12 +186,16 @@ Warehouse-Create
     click Element    xpath=//form[@id='ofmAddWarehouse']/div/div/div/div[10]/div/button/div/div/div
     click Element    xpath=//*[@id="ofmAddWarehouse"]/div/div/div/div[10]/div/div/div/ul/li[2]/a
     #select    id=ocmWahStaPrcStk    ตัดสต๊อก
-    click element    xpath=//*[@id="ofmAddWarehouse"]/div/div
-    click element    xpath=//form[@id='ofmAddWarehouse']/div/div/div/div[11]/div/button/div/div/div
-    click element    xpath=//*[@id="ofmAddWarehouse"]/div/div/div/div[11]/div/div/div/ul/li[3]/a
+    #click element    xpath=//*[@id="ofmAddWarehouse"]/div/div
+    #click element    xpath=//form[@id='ofmAddWarehouse']/div/div/div/div[11]/div/button/div/div/div
+    #click element    xpath=//*[@id="ofmAddWarehouse"]/div/div/div/div[11]/div/div/div/ul/li[3]/a
     #select    id=ocmWahStaChkStk    เช็คออนไลน์ (หลังบ้าน)
+<<<<<<< HEAD
     click Element    xpath=//div[@id='odvBtnCmpEditInfo']/div/button
     Execute JavaScript    window.scrollTo(0,0)
+=======
+    #click Element    xpath=//div[@id='odvBtnCmpEditInfo']/div/button
+>>>>>>> a2ff553faa9405eead8448390389eecd5ced15bb
     sleep    2s
     click Element    id=obtBarBack
     #Warehouse-Del
@@ -242,7 +246,7 @@ POS-Create
     Execute JavaScript    window.scrollTo(0,1000)
     ${response}    Get Text    xpath=//*[@id="odvModalContent"]/div[1]/div/div[1]/label
     Should Be Equal As Strings    ${response}    แสดงข้อมูล : คลังสินค้า
-    click    xpath=//table[@id='otbBrowserList']/tbody/tr/td[2]
+    #click    xpath=//table[@id='otbBrowserList']/tbody/tr/td[2]
     sleep    1s
     click    xpath=//button[@onclick="JCNxConfirmSelected('oBrowsePosOption')"]
     sleep    1s
@@ -252,7 +256,7 @@ POS-Create
     Should Be Equal As Strings    ${response}    แสดงข้อมูล : หัวท้ายใบเสร็จ
     click    xpath=//div[@id='odvModalContent']/div[2]/div[3]/div[2]/div/button[3]
     sleep    1s
-    click    xpath=//table[@id='otbBrowserList']/tbody/tr[5]/td[2]
+    #click    xpath=//table[@id='otbBrowserList']/tbody/tr[5]/td[2]
     sleep    1s
     click    xpath=//button[@onclick="JCNxConfirmSelected('oSlipMessage')"]
     sleep    1s
