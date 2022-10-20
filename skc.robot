@@ -171,14 +171,14 @@ Warehouse-Create
     #click element    xpath=//*[@id="odvBtnWahInfo"]/button[2]
     ${CK}    Get WebElement    xpath=//*[@id="odvBtnWahInfo"]/button[2]
     Execute Javascript    arguments[0].click();    ARGUMENTS    ${CK}
-    #Wait Until Element Is Visible    xpaht=//*[@id="odvBtnCmpEditInfo"]/div/button[1]    20
-    #Wait Until Element Is Visible    xpath=//*[@id="odvWahAutoGenCode"]/div/label/span    20
+    Wait Until Element Is Visible    xpaht=//*[@id="odvBtnCmpEditInfo"]/div/button[1]    20
+    Wait Until Element Is Visible    xpath=//*[@id="odvWahAutoGenCode"]/div/label/span    20
     Wait Until Page Contains    สร้างอัตโนมัติ    300
-    #${response}    Get Text    xpath=//*[@id="odvWahAutoGenCode"]/div/label/span
-    #Should Be Equal As Strings    ${response}    สร้างอัตโนมัติ
-    #click Element    xpaht=//*[@id="odvWahAutoGenCode"]/div/label    #<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< Issue
-    #Unselect Checkbox    name=ocbWahAutoGenCode
-    #type    id=oetWahCode    WHCQA
+    ${response}    Get Text    xpath=//*[@id="odvWahAutoGenCode"]/div/label/span
+    Should Be Equal As Strings    ${response}    สร้างอัตโนมัติ
+    click Element    xpaht=//*[@id="odvWahAutoGenCode"]/div/label    #<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< Issue
+    Unselect Checkbox    name=ocbWahAutoGenCode
+    type    id=oetWahCode    WHCQA
     Execute JavaScript    window.scrollTo(0,500)
     click Element    xpath=//img[contains(@src,'http://sit.ada-soft.com:8899/application/modules/common/assets/images/icons/find-24.png')]
     click Element    xpath=//table[@id='otbBrowserList']/tbody/tr[5]/td
@@ -247,7 +247,7 @@ POS-Create
     Execute JavaScript    window.scrollTo(0,1000)
     ${response}    Get Text    xpath=//*[@id="odvModalContent"]/div[1]/div/div[1]/label
     Should Be Equal As Strings    ${response}    แสดงข้อมูล : คลังสินค้า
-    #click    xpath=//table[@id='otbBrowserList']/tbody/tr/td[2]
+    click    xpath=//table[@id='otbBrowserList']/tbody/tr/td[2]
     sleep    1s
     click    xpath=//button[@onclick="JCNxConfirmSelected('oBrowsePosOption')"]
     sleep    1s
@@ -257,15 +257,14 @@ POS-Create
     Should Be Equal As Strings    ${response}    แสดงข้อมูล : หัวท้ายใบเสร็จ
     click    xpath=//div[@id='odvModalContent']/div[2]/div[3]/div[2]/div/button[3]
     sleep    1s
-    #click    xpath=//table[@id='otbBrowserList']/tbody/tr[5]/td[2]
+    click    xpath=//table[@id='otbBrowserList']/tbody/tr[5]/td[2]
     sleep    1s
     click    xpath=//button[@onclick="JCNxConfirmSelected('oSlipMessage')"]
     sleep    1s
     Execute JavaScript    window.scrollTo(0,0)
     click    xpath=//*[@id="odvBtnAddEdit"]/div/div/button[1]
-    
-    #sleep    1s
-    #click    xpath=//*[@id="odvBtnAddEdit"]/div/button
+    sleep    1s
+    click    xpath=//*[@id="odvBtnAddEdit"]/div/button
     [Teardown]    Close Browser
 
 #Branch-Del
