@@ -9,12 +9,14 @@ ${SELSPEED}       0.5s
 ${USERNAME}       009
 ${PASSWORD}       123456
 ${NPASS}          123456789
+${SCREEN}         Execute javascript    document.body.style.zoom="60%"
 
 *** Test Cases ***
 Login-FailCase
     [Setup]    Run Keywords    Open Browser    ${URL}    ${BROWSER}
     ...    AND    Set Selenium Speed    ${SELSPEED}
     Maximize Browser Window
+    Execute javascript    document.body.style.zoom="60%"
     type    id=oetUsername    009
     type    id=oetPassword    123456789
     click    xpath=//button[@id='obtLOGConfirmLogin']/span
@@ -28,6 +30,7 @@ Branch-Create
     [Setup]    Run Keywords    Open Browser    http://sit.ada-soft.com:8899/login    ${BROWSER}
     ...    AND    Set Selenium Speed    ${SELSPEED}
     Maximize Browser Window
+    Execute javascript    document.body.style.zoom="60%"
     type    id=oetUsername    009
     type    id=oetPassword    123456
     click    id=obtLOGConfirmLogin
@@ -152,6 +155,7 @@ Warehouse-Create
     [Setup]    Run Keywords    Open Browser    ${URL}     ${BROWSER}
     ...    AND    Set Selenium Speed    ${SELSPEED}
     Maximize Browser Window
+    Execute javascript    document.body.style.zoom="60%"
     type    id=oetUsername    009
     type    id=oetPassword    123456
     click    id=obtLOGConfirmLogin
@@ -185,17 +189,12 @@ Warehouse-Create
     click Element    link=คลังทั่วไป
     click Element    xpath=//form[@id='ofmAddWarehouse']/div/div/div/div[10]/div/button/div/div/div
     click Element    xpath=//*[@id="ofmAddWarehouse"]/div/div/div/div[10]/div/div/div/ul/li[2]/a
-    #select    id=ocmWahStaPrcStk    ตัดสต๊อก
-    #click element    xpath=//*[@id="ofmAddWarehouse"]/div/div
-    #click element    xpath=//form[@id='ofmAddWarehouse']/div/div/div/div[11]/div/button/div/div/div
-    #click element    xpath=//*[@id="ofmAddWarehouse"]/div/div/div/div[11]/div/div/div/ul/li[3]/a
-    #select    id=ocmWahStaChkStk    เช็คออนไลน์ (หลังบ้าน)
-<<<<<<< HEAD
+    select    id=ocmWahStaPrcStk    ตัดสต๊อก
+    click element    xpath=//*[@id="ofmAddWarehouse"]/div/div
+    click element    xpath=//form[@id='ofmAddWarehouse']/div/div/div/div[11]/div/button/div/div/div
+    lick element    xpath=//*[@id="ofmAddWarehouse"]/div/div/div/div[11]/div/div/div/ul/li[3]/a
+    select    id=ocmWahStaChkStk    เช็คออนไลน์ (หลังบ้าน)
     click Element    xpath=//div[@id='odvBtnCmpEditInfo']/div/button
-    
-=======
-    #click Element    xpath=//div[@id='odvBtnCmpEditInfo']/div/button
->>>>>>> a2ff553faa9405eead8448390389eecd5ced15bb
     sleep    2s
     Execute JavaScript    window.scrollTo(0,0)
     click Element    id=obtBarBack
@@ -206,6 +205,7 @@ POS-Create
     [Setup]    Run Keywords    Open Browser    ${URL}     ${BROWSER}
     ...    AND    Set Selenium Speed    ${SELSPEED}
     Maximize Browser Window
+    Execute javascript    document.body.style.zoom="60%"
     type    id=oetUsername    009
     type    id=oetPassword    123456
     click    id=obtLOGConfirmLogin
@@ -272,6 +272,7 @@ POS-Create
 #    [Setup]    Run Keywords    Open Browser    http://sit.ada-soft.com:8899/login    ${BROWSER}
 #    ...    AND    Set Selenium Speed    ${SELSPEED}
 #    Maximize Browser Window
+#    Execute javascript    document.body.style.zoom="60%"
 #    type    id=oetUsername    009
 #    type    id=oetPassword    123456
 #    click    id=obtLOGConfirmLogin
