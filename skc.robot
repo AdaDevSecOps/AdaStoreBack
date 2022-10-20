@@ -3,7 +3,7 @@ Documentation     SKC AUTOMATION TEST
 Library           Selenium2Library    implicit_wait=300
 
 *** Variables ***
-${URL}            http://sit.ada-soft.com:8899/login
+${URL}            http://sit.ada-soft.com:8999/login
 ${BROWSER}        chrome
 ${SELSPEED}       0.5s
 ${USERNAME}       009
@@ -175,6 +175,7 @@ Warehouse-Create
     #click Element    xpaht=//*[@id="odvWahAutoGenCode"]/div/label    #<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< Issue
     #Unselect Checkbox    name=ocbWahAutoGenCode
     #type    id=oetWahCode    WHCQA
+    Execute JavaScript    window.scrollTo(0,500)
     click Element    xpath=//img[contains(@src,'http://sit.ada-soft.com:8899/application/modules/common/assets/images/icons/find-24.png')]
     click Element    xpath=//table[@id='otbBrowserList']/tbody/tr[5]/td
     click Element    xpath=//button[@onclick="JCNxConfirmSelected('oWahBrowseBchCreated')"]
@@ -190,6 +191,7 @@ Warehouse-Create
     click element    xpath=//*[@id="ofmAddWarehouse"]/div/div/div/div[11]/div/div/div/ul/li[3]/a
     #select    id=ocmWahStaChkStk    เช็คออนไลน์ (หลังบ้าน)
     click Element    xpath=//div[@id='odvBtnCmpEditInfo']/div/button
+    Execute JavaScript    window.scrollTo(0,0)
     sleep    2s
     click Element    id=obtBarBack
     #Warehouse-Del
@@ -237,6 +239,7 @@ POS-Create
     click    xpath=//form[@id='ofmAddSaleMachine']/div/div/div[7]/div/div/div[2]/ul/li/a
     click    xpath=//img[contains(@src,'http://sit.ada-soft.com:8899/application/modules/common/assets/images/icons/find-24.png')]
     sleep    1s
+    Execute JavaScript    window.scrollTo(0,1000)
     ${response}    Get Text    xpath=//*[@id="odvModalContent"]/div[1]/div/div[1]/label
     Should Be Equal As Strings    ${response}    แสดงข้อมูล : คลังสินค้า
     click    xpath=//table[@id='otbBrowserList']/tbody/tr/td[2]
@@ -255,6 +258,7 @@ POS-Create
     sleep    1s
     Execute JavaScript    window.scrollTo(0,0)
     click    xpath=//*[@id="odvBtnAddEdit"]/div/div/button[1]
+    Execute JavaScript    window.scrollTo(0,0)
     #sleep    1s
     #click    xpath=//*[@id="odvBtnAddEdit"]/div/button
     [Teardown]    Close Browser
