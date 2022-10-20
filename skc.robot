@@ -31,10 +31,9 @@ Branch-Create
     ...    AND    Set Selenium Speed    ${SELSPEED}
     Maximize Browser Window
     #Execute javascript    document.body.style.zoom="80%"
-    input Text    id=oetUsername    009
-    input Text    id=oetPassword    123456
+    type    id=oetUsername    009
+    type    id=oetPassword    123456
     click    id=obtLOGConfirmLogin
-    open    http://sit.ada-soft.com:8899/
     Wait Until Page Contains    AdaSoft    300
     ${response}    Get Text    id=spnCompanyName
     Should Be Equal As Strings    ${response}    AdaSoft
@@ -156,10 +155,9 @@ Warehouse-Create
     ...    AND    Set Selenium Speed    ${SELSPEED}
     Maximize Browser Window
     #Execute javascript    document.body.style.zoom="80%"
-    input Text    id=oetUsername    009
-    input Text    id=oetPassword    123456
+    type    id=oetUsername    009
+    type    id=oetPassword    123456
     click    id=obtLOGConfirmLogin
-    open    http://sit.ada-soft.com:8899/
     Wait Until Page Contains    AdaSoft    300
     ${response}    Get Text    id=spnCompanyName
     Should Be Equal As Strings    ${response}    AdaSoft
@@ -206,10 +204,9 @@ POS-Create
     ...    AND    Set Selenium Speed    ${SELSPEED}
     Maximize Browser Window
     #Execute javascript    document.body.style.zoom="80%"
-    input Text    id=oetUsername    009
-    input Text    id=oetPassword    123456
+    type    id=oetUsername    009
+    type    id=oetPassword    123456
     click    id=obtLOGConfirmLogin
-    open    http://sit.ada-soft.com:8899/
     Wait Until Page Contains    AdaSoft    300
     ${response}    Get Text    id=spnCompanyName
     Should Be Equal As Strings    ${response}    AdaSoft    #<<<<<<<<<<<<<<<<<<<<<<
