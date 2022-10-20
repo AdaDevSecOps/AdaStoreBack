@@ -27,12 +27,12 @@ Login-FailCase
     [Teardown]    Close Browser
 
 Branch-Create
-    [Setup]    Run Keywords    Open Browser    http://sit.ada-soft.com:8899/login    ${BROWSER}
+    [Setup]    Run Keywords    Open Browser    ${URL}    ${BROWSER}
     ...    AND    Set Selenium Speed    ${SELSPEED}
     Maximize Browser Window
     #Execute javascript    document.body.style.zoom="80%"
-    type    id=oetUsername    009
-    type    id=oetPassword    123456
+    input Text    id=oetUsername    009
+    input Text    id=oetPassword    123456
     click    id=obtLOGConfirmLogin
     open    http://sit.ada-soft.com:8899/
     Wait Until Page Contains    AdaSoft    300
@@ -152,12 +152,12 @@ Branch-Create
     [Teardown]    Close Browser
 
 Warehouse-Create
-    [Setup]    Run Keywords    Open Browser    ${URL}     ${BROWSER}
+    [Setup]    Run Keywords    Open Browser    ${URL}    ${BROWSER}
     ...    AND    Set Selenium Speed    ${SELSPEED}
     Maximize Browser Window
     #Execute javascript    document.body.style.zoom="80%"
-    type    id=oetUsername    009
-    type    id=oetPassword    123456
+    input Text    id=oetUsername    009
+    input Text    id=oetPassword    123456
     click    id=obtLOGConfirmLogin
     open    http://sit.ada-soft.com:8899/
     Wait Until Page Contains    AdaSoft    300
@@ -206,8 +206,8 @@ POS-Create
     ...    AND    Set Selenium Speed    ${SELSPEED}
     Maximize Browser Window
     #Execute javascript    document.body.style.zoom="80%"
-    type    id=oetUsername    009
-    type    id=oetPassword    123456
+    input Text    id=oetUsername    009
+    input Text    id=oetPassword    123456
     click    id=obtLOGConfirmLogin
     open    http://sit.ada-soft.com:8899/
     Wait Until Page Contains    AdaSoft    300
