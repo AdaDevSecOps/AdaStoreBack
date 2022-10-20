@@ -262,7 +262,7 @@ POS-Create
     sleep    1s
     Execute JavaScript    window.scrollTo(0,0)
     click    xpath=//*[@id="odvBtnAddEdit"]/div/div/button[1]
-    Execute JavaScript    window.scrollTo(0,0)
+    
     #sleep    1s
     #click    xpath=//*[@id="odvBtnAddEdit"]/div/button
     [Teardown]    Close Browser
