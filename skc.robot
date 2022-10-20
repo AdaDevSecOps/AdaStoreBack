@@ -174,7 +174,7 @@ Warehouse-Create
     ${response}    Get Text    xpath=//*[@id="odvWahAutoGenCode"]/div/label/span
     Should Be Equal As Strings    ${response}    สร้างอัตโนมัติ
     Execute JavaScript    window.scrollTo(0,500)
-    click Element    xpath=//img[contains(@src,'http://sit.ada-soft.com:8899/application/modules/common/assets/images/icons/find-24.png')]
+    click Element    id=obtWahBrowseBchCreated
     click Element    xpath=//table[@id='otbBrowserList']/tbody/tr[5]/td
     click Element    xpath=//button[@onclick="JCNxConfirmSelected('oWahBrowseBchCreated')"]
     click Element    id=oetWahName
@@ -237,7 +237,7 @@ POS-Create
     click    xpath=//form[@id='ofmAddSaleMachine']/div/div/div[7]/div/div/div[2]/ul/li/a    #เลือกประเภทจุดขาย
     #
     Execute JavaScript    window.scrollTo(0,500)
-    click     id=obtBchBrowseWah
+    click     id=obtBchBrowseWah      #เปิดคลังสินค้า
     ${pNameChk}    Set Variable    ไม่พบข้อมูล    #----ค่า Default ที่ต้องการเปรียบเทียบ
     ${pName}    Get Text    xpath=//*[@id="otbBrowserList"]/tbody/tr/td
     IF    "${pName}" == "${pNameChk}"    #ถ้าไม่พบข้อมูลให้เพิ่ม
@@ -252,6 +252,9 @@ POS-Create
     click    xpath=//*[@id="odvModalContent2"]/div[1]/div/div[2]/button[1]
     sleep    2s
     click     id=odvBchBtnGroup
+    ELSE
+    click    xpath=//*[@id="odvModalContent"]/div[1]/div/div[2]/button[2]
+    END
     #>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> จบหน้าเพิ่มจุดขายย่อย
     #click    xpath=//img[contains(@src,'http://sit.ada-soft.com:8899/application/modules/common/assets/images/icons/find-24.png')]
     sleep    1s
