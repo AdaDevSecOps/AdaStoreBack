@@ -185,9 +185,9 @@ Warehouse-Create
     click Element    xpath=//form[@id='ofmAddWarehouse']/div/div/div/div[10]/div/button/div/div/div
     click Element    xpath=//*[@id="ofmAddWarehouse"]/div/div/div/div[10]/div/div/div/ul/li[2]/a
     #select    id=ocmWahStaPrcStk    ตัดสต๊อก
-    click element    xpath=//*[@id="ofmAddWarehouse"]/div/div
-    click element    xpath=//form[@id='ofmAddWarehouse']/div/div/div/div[11]/div/button/div/div/div
-    click element    xpath=//*[@id="ofmAddWarehouse"]/div/div/div/div[11]/div/div/div/ul/li[3]/a
+    #click element    xpath=//*[@id="ofmAddWarehouse"]/div/div
+    #click element    xpath=//form[@id='ofmAddWarehouse']/div/div/div/div[11]/div/button/div/div/div
+    #click element    xpath=//*[@id="ofmAddWarehouse"]/div/div/div/div[11]/div/div/div/ul/li[3]/a
     #select    id=ocmWahStaChkStk    เช็คออนไลน์ (หลังบ้าน)
     #click Element    xpath=//div[@id='odvBtnCmpEditInfo']/div/button
     sleep    2s
