@@ -148,53 +148,6 @@ Branch-Create
     END
     [Teardown]    Close Browser
 
-Warehouse-Create
-    [Setup]    Run Keywords    Open Browser    http://sit.ada-soft.com:8899/login    ${BROWSER}
-    ...    AND    Set Selenium Speed    ${SELSPEED}
-    Maximize Browser Window
-    type    id=oetUsername    009
-    type    id=oetPassword    123456
-    click    id=obtLOGConfirmLogin
-    open    http://sit.ada-soft.com:8899/
-    Wait Until Page Contains    AdaSoft    50
-    ${response}    Get Text    id=spnCompanyName
-    Should Be Equal As Strings    ${response}    AdaSoft
-    click    xpath=//div[@id='wrapper']/div[2]/div[3]/button/img
-    click    xpath=//nav[@id='oNavMenuMAS']/ul/li/ul/li[2]/a/span
-    click    link=คลังสินค้า
-    Wait Until Page Contains    คลังสินค้า    50
-    sleep    2s
-    #click element    xpath=//*[@id="odvBtnWahInfo"]/button[2]
-    ${CK}    Get WebElement    xpath=//*[@id="odvBtnWahInfo"]/button[2]
-    Execute Javascript    arguments[0].click();    ARGUMENTS    ${CK}
-    #Wait Until Element Is Visible    xpaht=//*[@id="odvBtnCmpEditInfo"]/div/button[1]    20
-    #Wait Until Element Is Visible    xpath=//*[@id="odvWahAutoGenCode"]/div/label/span    20
-    Wait Until Page Contains    สร้างอัตโนมัติ    50
-    #${response}    Get Text    xpath=//*[@id="odvWahAutoGenCode"]/div/label/span
-    #Should Be Equal As Strings    ${response}    สร้างอัตโนมัติ
-    #click Element    xpaht=//*[@id="odvWahAutoGenCode"]/div/label    #<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< Issue
-    #Unselect Checkbox    name=ocbWahAutoGenCode
-    #type    id=oetWahCode    WHCQA
-    click Element    xpath=//img[contains(@src,'http://sit.ada-soft.com:8899/application/modules/common/assets/images/icons/find-24.png')]
-    click Element    xpath=//table[@id='otbBrowserList']/tbody/tr[5]/td
-    click Element    xpath=//button[@onclick="JCNxConfirmSelected('oWahBrowseBchCreated')"]
-    click Element    id=oetWahName
-    type    id=oetWahName    WHCQA Create by Automaion Tester
-    click Element    xpath=//form[@id='ofmAddWarehouse']/div/div/div/div[5]/div/button/div
-    click Element    link=คลังทั่วไป
-    click Element    xpath=//form[@id='ofmAddWarehouse']/div/div/div/div[10]/div/button/div/div/div
-    click Element    xpath=//*[@id="ofmAddWarehouse"]/div/div/div/div[10]/div/div/div/ul/li[2]/a
-    #select    id=ocmWahStaPrcStk    ตัดสต๊อก
-    click element    xpath=//*[@id="ofmAddWarehouse"]/div/div
-    click element    xpath=//form[@id='ofmAddWarehouse']/div/div/div/div[11]/div/button/div/div/div
-    click element    xpath=//*[@id="ofmAddWarehouse"]/div/div/div/div[11]/div/div/div/ul/li[3]/a
-    #select    id=ocmWahStaChkStk    เช็คออนไลน์ (หลังบ้าน)
-    click Element    xpath=//div[@id='odvBtnCmpEditInfo']/div/button
-    sleep    2s
-    click Element    id=obtBarBack
-    #Warehouse-Del
-    [Teardown]    Close Browser
-
 POS-Create
     [Setup]    Run Keywords    Open Browser    http://sit.ada-soft.com:8899/login    ${BROWSER}
     ...    AND    Set Selenium Speed    ${SELSPEED}
