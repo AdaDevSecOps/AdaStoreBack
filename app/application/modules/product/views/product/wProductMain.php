@@ -47,6 +47,7 @@
                 <option class="" value="4"><?=language('product/product/product','tPdtSreachType4')?></option>
                 <option class="" value="5"><?=language('product/product/product','tPdtSreachType5')?></option>
                 <option class="" value="6"><?=language('product/product/product','tPdtSreachType6')?></option>
+                <option class="" value="7"><?=language('product/product/product','กลุ่มสินค้า')?></option>
             </select>
         </div>
         </div>
