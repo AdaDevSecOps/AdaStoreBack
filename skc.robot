@@ -322,11 +322,11 @@ type
 
 selectAndWait
     [Arguments]    ${element}    ${value}
-    Select From List    ${element}    ${value}
+    Select All From List    ${element}    ${value}
 
 select
     [Arguments]    ${element}    ${value}
-    Select From List    ${element}    ${value}
+    Select All From List    ${element}    ${value}
 
 verifyValue
     [Arguments]    ${element}    ${value}
