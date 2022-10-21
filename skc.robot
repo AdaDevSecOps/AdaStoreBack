@@ -15,8 +15,8 @@ ${SCREEN}         document.body.style.zoom="60%"
 Login-FailCase
     [Setup]    Run Keywords    Open Browser    ${URL}    ${BROWSER}
     ...    AND    Set Selenium Speed    ${SELSPEED}
-    #Maximize Browser Window
-    Set Window Size      ${1400} ${600}
+    Maximize Browser Window
+    #Set Window Size      ${1400} ${600}
     #Execute javascript    document.body.style.zoom="80%"
     type    id=oetUsername    009
     type    id=oetPassword    123456789
