@@ -15,7 +15,8 @@ ${SCREEN}         document.body.style.zoom="60%"
 Login-FailCase
     [Setup]    Run Keywords    Open Browser    ${URL}    ${BROWSER}
     ...    AND    Set Selenium Speed    ${SELSPEED}
-    Maximize Browser Window
+    #Maximize Browser Window
+    Set Window Size      ${1400} ${600}
     #Execute javascript    document.body.style.zoom="80%"
     type    id=oetUsername    009
     type    id=oetPassword    123456789
@@ -228,7 +229,7 @@ POS-Create
     sleep    1s
     Execute JavaScript    window.scrollTo(0,500)
     type    id=oetPosRegNo    TESTER-01 Automation
-    Select From List By Label    ocmPosType    จุดขาย
+    Select From List By Label    ocmPosType    จุดขาย    #Dropdown select by name
     #click    xpath=//form[@id='ofmAddSaleMachine']/div/div/div[7]/div/button/div/div/div    #ประเภทจุดขาย
     #click    xpath=//form[@id='ofmAddSaleMachine']/div/div/div[7]/div/div/div[2]/ul/li/a    #เลือกประเภทจุดขาย
     Execute JavaScript    window.scrollTo(0,500)
