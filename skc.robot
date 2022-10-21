@@ -64,7 +64,7 @@ Branch-Create
     END
     click    xpath=//button[@id='oimBchBrowseCountry']/img
     Wait Until Page Contains    แสดงข้อมูล : ประเทศ    300
-    click    xpath=//*[@id="otbBrowserList"]/tbody/tr[5]/td[2]    #เลือกประเทศไทย
+    click    xpath=//*[@id="otbBrowserList"]/tbody/tr[1]/td[1]    #เลือกประเทศไทย
     click    xpath=//button[@onclick="JCNxConfirmSelected('oBchBrowseCountry')"]
     click    xpath=//button[@id='oimBchBrowsePpl']/img
     Wait Until Page Contains    แสดงข้อมูล : กลุ่มราคาสินค้า    300
