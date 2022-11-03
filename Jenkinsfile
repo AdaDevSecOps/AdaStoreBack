@@ -12,8 +12,8 @@ pipeline
     //     registryCredential = 'naleruto-dockerhub'
     //     dockerImage = ''
     // }
-    // stages
-    // {
+    stages
+    {
 
 
     //     stage('Git Clone')
