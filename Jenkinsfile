@@ -5,13 +5,13 @@ def dockerRepo = 'naleruto/ada-webserver'
 
 pipeline
 {
-    // agent any
-    // environment
-    // {
-    //     imagename = "naleruto/ada-webserver"
-    //     registryCredential = 'naleruto-dockerhub'
-    //     dockerImage = ''
-    // }
+    agent any
+    environment
+    {
+        imagename = "naleruto/ada-webserver"
+        registryCredential = 'naleruto-dockerhub'
+        dockerImage = ''
+    }
     stages
     {
 
