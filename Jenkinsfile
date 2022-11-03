@@ -50,7 +50,7 @@ pipeline
                         bat 'docker run -d \
                         --env BASE_TITLE=AdaSiamKubota \
                         --env BASE_URL=http://sit.ada-soft.com:8899/ \
-                        --env BASE_DATABASE=SKC_Fullloop2 \
+                        --env BASE_DATABASE=AdaAccSKC \
                         --env DATABASE_IP=147.50.143.126,33433 \
                         --env DATABASE_USERNAME=sa \
                         --env DATABASE_PASSWORD=GvFhk@61 \
@@ -215,7 +215,7 @@ pipeline
                         bat 'docker run -d \
                         --env BASE_TITLE=AdaSiamKubota \
                         --env BASE_URL=http://sit.ada-soft.com:8999/ \
-                        --env BASE_DATABASE=SKC_Fullloop2 \
+                        --env BASE_DATABASE=AdaAccSKC \
                         --env DATABASE_IP=147.50.143.126,33433 \
                         --env DATABASE_USERNAME=sa \
                         --env DATABASE_PASSWORD=GvFhk@61 \
